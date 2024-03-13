@@ -17,3 +17,4 @@ export class CatalogComponent implements OnInit {
     this.movieService.getAllMovies().subscribe( (movies) => this.Allmovies = movies)
   }
 }
+
