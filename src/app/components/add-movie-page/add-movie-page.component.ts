@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-movie-page',
@@ -12,15 +12,22 @@ export class AddMoviePageComponent {
  }
 
  addMovieForm = this.fb.group({
-  name: "",
-  genre: "",
-  year: "" ,
+  name: ["", Validators.required],
+  genre:["", Validators.required],
+  year: ["", Validators.required, Validators.minLength(4)],
   summary: "",
   actors: "",
   director: ""
  })
 
+ isSubmitted:boolean = false;
+
+ get name(){
+  return this.addMovieForm.get("name");
+ }
+
  onSubmit() {
+  this.isSubmitted = true;
   console.log(this.addMovieForm.getRawValue());
  }
 

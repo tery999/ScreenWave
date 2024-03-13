@@ -4,6 +4,7 @@
         <div>
             <label>Movie Name</label>
             <input type="text" formControlName="name">
+            <p *ngIf="name?.invalid && isSubmitted" > Please enter movie name</p>
         </div>
         <div>
             <label>Genre</label>
