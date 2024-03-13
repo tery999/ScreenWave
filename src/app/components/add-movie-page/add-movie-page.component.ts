@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Movies } from 'src/app/interfaces/Movies';
+import { MovieServiceService } from 'src/app/services/movie-service.service';
 
 @Component({
   selector: 'app-add-movie-page',
@@ -7,14 +9,14 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./add-movie-page.component.css']
 })
 export class AddMoviePageComponent {
- constructor ( private fb:FormBuilder) {
+ constructor ( private fb:FormBuilder, private movieService: MovieServiceService) {
 
  }
 
  addMovieForm = this.fb.group({
   name: ["", Validators.required],
   genre:["", Validators.required],
-  year: ["", Validators.required, Validators.minLength(4)],
+  year: ["", [Validators.required, Validators.minLength(4)]],
   summary: "",
   actors: "",
   director: ""
@@ -29,6 +31,8 @@ export class AddMoviePageComponent {
  onSubmit() {
   this.isSubmitted = true;
   console.log(this.addMovieForm.getRawValue());
+  const body = this.addMovieForm.value;
+  this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
  }
 
 }

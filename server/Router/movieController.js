@@ -8,4 +8,10 @@ router.get("/", async (req, res) => {
     res.json(allMovies);
  })
 
+ router.post("/Add", async (req, res) => {
+    const movieInfo = req.body;
+    await Movie.create(movieInfo);
+    res.status(200).send("Movie Added");
+ })
+
  module.exports = router;
