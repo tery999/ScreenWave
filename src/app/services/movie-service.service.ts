@@ -16,7 +16,7 @@ export class MovieServiceService {
     return this.http.get<Movies[]>(this.baseURL);
   }
 
-  addMovie(movie:any) {
+  addMovie(movie:Movies) {
     // debugger;
     console.log("SERVICE CHECK BODY", movie);
 

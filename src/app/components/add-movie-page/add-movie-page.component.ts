@@ -15,6 +15,7 @@ export class AddMoviePageComponent {
 
  addMovieForm = this.fb.group({
   name: ["", Validators.required],
+  picture: ["", Validators.required],
   genre:["", Validators.required],
   year: ["", [Validators.required, Validators.minLength(4)]],
   summary: "",
@@ -31,7 +32,7 @@ export class AddMoviePageComponent {
  onSubmit() {
   this.isSubmitted = true;
   console.log(this.addMovieForm.getRawValue());
-  const body = this.addMovieForm.value;
+  const body:Movies = this.addMovieForm.value as unknown as Movies;
   this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
  }
 
