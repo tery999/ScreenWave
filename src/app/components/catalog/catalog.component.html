@@ -1,4 +1,2 @@
 <p>catalog works!</p>
-<div *ngFor="let movie of Allmovies">
-    <p>{{movie.name}} Year: {{movie.year}}</p>
-</div>
+<app-movie-list-component *ngFor="let movie of Allmovies" [movie]="movie"></app-movie-list-component>

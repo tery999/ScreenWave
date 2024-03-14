@@ -10,6 +10,7 @@ import { AddMoviePageComponent } from './components/add-movie-page/add-movie-pag
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MovieListComponentComponent } from './components/catalog/movie-list-component/movie-list-component.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     NavigationComponent,
     AddMoviePageComponent,
     CatalogComponent,
+    MovieListComponentComponent,
   ],
   imports: [
     BrowserModule,
