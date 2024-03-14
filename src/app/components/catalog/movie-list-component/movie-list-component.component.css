@@ -1,0 +1,19 @@
+.MovieListContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rebeccapurple;
+    border-radius: 5px;
+}
+
+.ImageHolder {
+    width: 170px;
+    height: 250px;
+}
+
+.image {
+    object-fit: contain;
+    width: 170px;
+    height: 250px;
+}

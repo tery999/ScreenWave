@@ -4,4 +4,10 @@
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+
+}
+
+.CatalogHeading {
+    display: flex;
+    justify-content: center;
 }

@@ -1,10 +1,10 @@
-<p>movie-list-component works!</p>
+
 <div class="MovieListContainer">
-    {{movie.name}}
-    {{movie.genre}}
-    {{movie.year}}
+   <h2>{{movie.name}}</h2> 
+  <div class="ImageHolder">
+    <img class="image" src={{movie.picture}} alt="">
+  </div>
     <p *ngIf="movie.summary">
         Summary: {{movie.summary}}
     </p>
-   
 </div>
