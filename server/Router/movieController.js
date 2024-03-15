@@ -8,6 +8,18 @@ router.get("/", async (req, res) => {
     res.json(allMovies);
  })
 
+ router.get("/:id", async (req, res) => {
+   try {
+      const id = req.params.id;
+      const allMovies = await Movie.findById(id)
+      console.log(allMovies);
+      res.json(allMovies);
+   } catch (err) {
+      res.status(400).json(err);
+   }
+ 
+})
+
  router.post("/Add", async (req, res) => {
     const movieInfo = req.body;
     await Movie.create(movieInfo);

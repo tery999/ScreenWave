@@ -22,4 +22,9 @@ export class MovieServiceService {
 
     return this.http.post(this.baseURL + "/Add", movie , {responseType:"text"});
   }
+
+  getOneMovie ( id:string) {
+    const urlMovieId = this.baseURL+`/${id}`
+    return this.http.get<Movies>( urlMovieId);
+  }
 }

@@ -1,9 +1,11 @@
 <div class="MovieListContainer">
     <div class="Border">
-            <h2>{{movie.name}} </h2>
-            <div class="bottomBorder"></div>
+        <h2>{{movie.name}} </h2>
+        <div class="bottomBorder"></div>
         <div class="ImageHolder">
-            <img class="image" src={{movie.picture}} alt="">
+            <a [routerLink]="['/Movies', movie._id ]">
+                <img class="image" src={{movie.picture}} alt="">
+            </a>
         </div>
     </div>
 </div>
