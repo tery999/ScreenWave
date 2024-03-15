@@ -1,11 +1,9 @@
 <div class="MovieListContainer">
     <div class="Border">
-        <h2>{{movie.name}}</h2>
+            <h2>{{movie.name}} </h2>
+            <div class="bottomBorder"></div>
         <div class="ImageHolder">
             <img class="image" src={{movie.picture}} alt="">
         </div>
-        <p *ngIf="movie.summary">
-            Summary: {{movie.summary}}
-        </p>
     </div>
 </div>

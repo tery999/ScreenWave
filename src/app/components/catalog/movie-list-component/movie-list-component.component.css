@@ -15,24 +15,36 @@ background: linear-gradient(22deg, rgba(7,64,194,1) 0%, rgba(113,0,135,1) 100%);
 .Border {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 350px;
     width: 240px;
     background-color: white;
+    border-radius: 4px;
 }
 
 .MovieListContainer h2 {
+    position: relative;
     font-family: "Changa";
+    margin-top: 1px;
+    margin-bottom: 0px;
+}
+
+.bottomBorder {
+    position: relative;
+    bottom: 10px;
+    width: 60px;
+    border-bottom: 5px solid orangered;
+    border-radius: 20px;
 }
 
 .ImageHolder {
-    width: 170px;
+    width: 190px;
     height: 250px;
 }
 
 .image {
-    object-fit: contain;
-    width: 170px;
+    object-fit: cover;
+    width: 190px;
     height: 250px;
 }
