@@ -10,11 +10,27 @@ import { MovieServiceService } from 'src/app/services/movie-service.service';
 export class CatalogComponent implements OnInit {
 
   Allmovies: Movies[]=[];
+  currentMovies: any[] = [];
+  searchMovie: string = "hi";
+
+  onClickSearch() {
+    debugger;
+    if(this.searchMovie.trim() === "") {
+      this.currentMovies = this.Allmovies;
+    } else {
+      this.currentMovies = this.Allmovies.filter ( (movie) => movie.name.toLowerCase().includes(this.searchMovie.toLowerCase() ));
+      console.log("ALL MOVIES ARR", this.Allmovies);
+      console.log("CUR MOVIES ARR", this.currentMovies);
+    }
+  }
 
   constructor ( private movieService: MovieServiceService) {}
 
   ngOnInit(): void {
-    this.movieService.getAllMovies().subscribe( (movies) => this.Allmovies = movies)
+    this.movieService.getAllMovies().subscribe( (movies) => {
+      this.Allmovies = movies
+      this.currentMovies = movies
+    })
   }
 }
 

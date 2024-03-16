@@ -1,4 +1,5 @@
-<h2 class="CatalogHeading">Our Catalog</h2>
+<input type="text" [(ngModel)]="searchMovie">
+<button (click)="onClickSearch()">Search</button>
 <div class="MovieContainer">
-<app-movie-list-component *ngFor="let movie of Allmovies" [movie]="movie"></app-movie-list-component>
+<app-movie-list-component *ngFor="let movie of currentMovies" [movie]="movie"></app-movie-list-component>
 </div>
