@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { trimValidator } from './AddMovieCustomVal';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-add-movie-page',
@@ -10,7 +12,7 @@ import { trimValidator } from './AddMovieCustomVal';
   styleUrls: ['./add-movie-page.component.css']
 })
 export class AddMoviePageComponent {
- constructor ( private fb:FormBuilder, private movieService: MovieServiceService) {
+ constructor ( private fb:FormBuilder, private movieService: MovieServiceService , private router:Router) {
 
  }
 
@@ -54,6 +56,7 @@ export class AddMoviePageComponent {
   if ( this.addMovieForm.valid ) {
     const body:Movies = this.addMovieForm.value as unknown as Movies;
     this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
+    this.router.navigateByUrl("/Catalog");
   }
  }
 

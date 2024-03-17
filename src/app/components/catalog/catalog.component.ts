@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-catalog',
@@ -8,6 +9,7 @@ import { MovieServiceService } from 'src/app/services/movie-service.service';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+  faMagnifyingGlass = faMagnifyingGlass;
 
   Allmovies: Movies[]=[];
   currentMovies: any[] = [];

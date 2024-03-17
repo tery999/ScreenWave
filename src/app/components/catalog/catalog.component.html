@@ -1,5 +1,13 @@
-<input type="text" [(ngModel)]="searchMovie">
-<button (click)="onClickSearch()">Search</button>
+<div class="searchBoxContainer">
+    <div class="searchBox">
+        <input type="text" [(ngModel)]="searchMovie">
+        <button class="iconHolder" (click)="onClickSearch()">
+            <fa-icon class="searchIcon" [icon]="faMagnifyingGlass"></fa-icon>
+        </button>
+    </div>
+</div>
+
+
 <div class="MovieContainer">
-<app-movie-list-component *ngFor="let movie of currentMovies" [movie]="movie"></app-movie-list-component>
+    <app-movie-list-component *ngFor="let movie of currentMovies" [movie]="movie"></app-movie-list-component>
 </div>
