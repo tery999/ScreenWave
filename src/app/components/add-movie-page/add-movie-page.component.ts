@@ -32,8 +32,10 @@ export class AddMoviePageComponent {
  onSubmit() {
   this.isSubmitted = true;
   console.log(this.addMovieForm.getRawValue());
-  const body:Movies = this.addMovieForm.value as unknown as Movies;
-  this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
+  if ( this.addMovieForm.valid ) {
+    const body:Movies = this.addMovieForm.value as unknown as Movies;
+    this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
+  }
  }
 
 }

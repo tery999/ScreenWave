@@ -1,35 +1,40 @@
 <p>add-movie-page works!</p>
-<div>
-    <form [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
-        <div>
-            <label>Movie Name</label>
-            <input type="text" formControlName="name">
-            <p *ngIf="name?.invalid && isSubmitted" > Please enter movie name</p>
+<div class="formDiv">
+    <form class="formClass" [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
+        <div class="containerNoButton">
+            <div class="firstRow">
+                <div>
+                    <label>Movie Name</label>
+                    <input type="text" formControlName="name">
+                    <p *ngIf="name?.invalid && isSubmitted"> Please enter movie name</p>
+                </div>
+                <div>
+                    <label>Picture</label>
+                    <input type="text" formControlName="picture">
+                </div>
+                <div>
+                    <label>Genre</label>
+                    <input type="text" formControlName="genre">
+                </div>
+                <div>
+                    <label>Year</label>
+                    <input type="number" formControlName="year">
+                </div>
+                <div>
+                    <label>Actors</label>
+                    <input type="text" formControlName="actors">
+                </div>
+                <div>
+                    <label>Director</label>
+                    <input type="text" formControlName="director">
+                </div>
+            </div>
+            <div class="secondRow">
+                <label>Summary</label>
+                <textarea name="summary" id="summary" formControlName="summary"></textarea>
+            </div>
         </div>
-        <div>
-            <label>Picture</label>
-            <input type="text" formControlName="picture">
-        </div>
-        <div>
-            <label>Genre</label>
-            <input type="text" formControlName="genre">
-        </div>
-        <div>
-            <label>Year</label>
-            <input type="number" formControlName="year">
-        </div>
-        <div>
-            <label>Summary</label>
-            <input type="text" formControlName="summary">
-        </div>
-        <div>
-            <label>Actors</label>
-            <input type="text" formControlName="actors">
-        </div>
-        <div>
-            <label>Director</label>
-            <input type="text" formControlName="director">
-        </div>
-       <button type="submit"> Add </button>
+
+        <button type="submit"> Add </button>
     </form>
 </div>

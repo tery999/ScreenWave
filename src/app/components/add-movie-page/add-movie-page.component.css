@@ -1,0 +1,43 @@
+.formDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.formClass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.containerNoButton {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.firstRow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.firstRow div {
+    display: flex;
+    flex-direction: column;
+}
+
+.firstRow input{
+    width: 250px;
+    height: 30px;
+}
+
+.secondRow {
+    display: flex;
+    flex-direction: column;
+}
+
+#summary {
+    height: 100%;
+    width: 300px;
+}
