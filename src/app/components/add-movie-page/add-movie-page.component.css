@@ -30,6 +30,8 @@
 .firstRow input{
     width: 250px;
     height: 30px;
+    border-radius: 5px;
+    border:  2px solid gray;
 }
 
 .secondRow {
@@ -40,4 +42,14 @@
 #summary {
     height: 100%;
     width: 300px;
+}
+
+.errorArea {
+   border: 2px solid red !important;
+}
+
+.errorMessage {
+    margin-top: 2px;
+    margin-bottom: 5px;
+    color: red;
 }

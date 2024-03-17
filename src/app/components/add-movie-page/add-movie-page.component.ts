@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
+import { trimValidator } from './AddMovieCustomVal';
 
 @Component({
   selector: 'app-add-movie-page',
@@ -14,19 +15,37 @@ export class AddMoviePageComponent {
  }
 
  addMovieForm = this.fb.group({
-  name: ["", Validators.required],
-  picture: ["", Validators.required],
-  genre:["", Validators.required],
-  year: ["", [Validators.required, Validators.minLength(4)]],
-  summary: "",
+  // NEED CUSTOMER VALIDATOR - required allows empty space. Doesnt automaticly trim it >:( 
+  name: ["", [Validators.required, trimValidator, Validators.maxLength(20)]],
+  picture: ["", [Validators.required, trimValidator]],
+  genre:["", [Validators.required, trimValidator]],
+  year: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+  summary:["", Validators.required],
   actors: "",
   director: ""
  })
 
  isSubmitted:boolean = false;
 
+ //for ease of use, not to type to full name in the template
  get name(){
   return this.addMovieForm.get("name");
+ }
+
+ get picture(){
+  return this.addMovieForm.get("picture");
+ }
+
+ get genre(){
+  return this.addMovieForm.get("genre");
+ }
+
+ get year(){
+  return this.addMovieForm.get("year");
+ }
+
+ get summary(){
+  return this.addMovieForm.get("summary");
  }
 
  onSubmit() {

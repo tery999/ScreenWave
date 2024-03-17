@@ -3,14 +3,17 @@
     <form class="formClass" [formGroup]="addMovieForm" (ngSubmit)="onSubmit()">
         <div class="containerNoButton">
             <div class="firstRow">
-                <div>
+                <div >
                     <label>Movie Name</label>
-                    <input type="text" formControlName="name">
-                    <p *ngIf="name?.invalid && isSubmitted"> Please enter movie name</p>
+                    <input id="name" [ngClass]="name?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="name">
+                    <p class="errorMessage" *ngIf=" (name?.hasError('required') || name?.hasError('trimValidator') ) && isSubmitted"> Please enter movie name</p>
+                    <p class="errorMessage" *ngIf="name?.hasError('maxlength') && isSubmitted">
+                         Name shouldn't exceed 20 characters.
+                        </p>
                 </div>
                 <div>
                     <label>Picture</label>
-                    <input type="text" formControlName="picture">
+                    <input [ngClass]="picture?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="picture">
                 </div>
                 <div>
                     <label>Genre</label>
