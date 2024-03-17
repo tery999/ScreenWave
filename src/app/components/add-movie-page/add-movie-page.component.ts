@@ -16,9 +16,9 @@ export class AddMoviePageComponent {
 
  addMovieForm = this.fb.group({
   // NEED CUSTOMER VALIDATOR - required allows empty space. Doesnt automaticly trim it >:( 
-  name: ["", [Validators.required, trimValidator, Validators.maxLength(20)]],
+  name: ["", [Validators.required, trimValidator, Validators.maxLength(30)]],
   picture: ["", [Validators.required, trimValidator]],
-  genre:["", [Validators.required, trimValidator]],
+  genre:["", [Validators.required, trimValidator,Validators.maxLength(30)]],
   year: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
   summary:["", Validators.required],
   actors: "",

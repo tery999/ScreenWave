@@ -8,33 +8,38 @@
                     <input id="name" [ngClass]="name?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="name">
                     <p class="errorMessage" *ngIf=" (name?.hasError('required') || name?.hasError('trimValidator') ) && isSubmitted"> Please enter movie name</p>
                     <p class="errorMessage" *ngIf="name?.hasError('maxlength') && isSubmitted">
-                         Name shouldn't exceed 20 characters.
+                         Name shouldn't exceed 30 characters.
                         </p>
                 </div>
                 <div>
                     <label>Picture</label>
                     <input [ngClass]="picture?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="picture">
+                    <p class="errorMessage" *ngIf="picture?.invalid && isSubmitted"> Please provide a good picture :) </p>
                 </div>
                 <div>
                     <label>Genre</label>
-                    <input type="text" formControlName="genre">
+                    <input [ngClass]="genre?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="genre">
+                    <p class="errorMessage" *ngIf=" (genre?.hasError('required') || genre?.hasError('trimValidator') ) && isSubmitted"> Please add genres </p>
+                    <p class="errorMessage" *ngIf="genre?.hasError('maxlength') && isSubmitted"> Too many genres </p>
                 </div>
                 <div>
                     <label>Year</label>
-                    <input type="number" formControlName="year">
+                    <input input [ngClass]="year?.invalid && isSubmitted ? 'errorArea' : ''" type="number" formControlName="year">
+                    <p class="errorMessage" *ngIf="year?.invalid && isSubmitted"> Please add valid year </p>
                 </div>
                 <div>
                     <label>Actors</label>
-                    <input type="text" formControlName="actors">
+                    <input type="text"  placeholder="Not required" formControlName="actors">
                 </div>
                 <div>
                     <label>Director</label>
-                    <input type="text" formControlName="director">
+                    <input type="text" placeholder="Not required" formControlName="director">
                 </div>
             </div>
             <div class="secondRow">
                 <label>Summary</label>
-                <textarea name="summary" id="summary" formControlName="summary"></textarea>
+                <textarea [ngClass]="summary?.invalid && isSubmitted ? 'errorArea' : ''" name="summary" id="summary" formControlName="summary"></textarea>
+                <p class="errorMessage" *ngIf="summary?.invalid && isSubmitted"> Please add some description </p>
             </div>
         </div>
 
