@@ -1,0 +1,55 @@
+.formDiv {
+    display: flex;
+    justify-content: center;
+}
+
+.formClass {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.containerNoButton {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.firstRow {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.firstRow div {
+    display: flex;
+    flex-direction: column;
+}
+
+.firstRow input{
+    width: 250px;
+    height: 30px;
+    border-radius: 5px;
+    border:  2px solid gray;
+}
+
+.secondRow {
+    display: flex;
+    flex-direction: column;
+}
+
+#summary {
+    height: 100%;
+    width: 300px;
+}
+
+.errorArea {
+   border: 2px solid red !important;
+}
+
+.errorMessage {
+    margin-top: 2px;
+    margin-bottom: 5px;
+    color: red;
+}

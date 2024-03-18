@@ -28,6 +28,7 @@ export class EditMoviePageComponent implements OnInit {
    })
   
    isSubmitted:boolean = false;
+  MovieId: string = ""
   
    //There should be an easier way that typing all value's get manually
    get name(){
@@ -59,12 +60,13 @@ export class EditMoviePageComponent implements OnInit {
    }
 
    onSubmit() {
+    debugger;
     this.isSubmitted = true;
     console.log(this.editMovieForm.getRawValue());
     if ( this.editMovieForm.valid ) {
       const body:Movies = this.editMovieForm.value as unknown as Movies;
-      this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
-      this.router.navigateByUrl("/Catalog");
+      this.movieService.editMovie(body, this.MovieId).subscribe( (info)=> console.log("SUCCESS", info));
+      this.router.navigateByUrl(`/Movies/${this.MovieId}`);
     }
    }
 
@@ -72,6 +74,9 @@ export class EditMoviePageComponent implements OnInit {
     const currentId = this.route.snapshot.params["id"];
     this.movieService.getOneMovie(currentId).subscribe( (movieData)=> {
       this.editMovieForm.patchValue(movieData)
+      this.MovieId = movieData._id as string;
+      // console.log("Check Movie Id", movieData._id);
+      // console.log("Check MovieId", this.MovieId);
     })
    }
 }

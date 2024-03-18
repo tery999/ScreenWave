@@ -26,4 +26,20 @@ router.get("/", async (req, res) => {
     res.status(200).send("Movie Added");
  })
 
+ router.put("/Edit/:id", async (req, res) => {
+   try {
+      const movieId = req.params.id
+      console.log("CHECK THE ID", movieId);
+      const updateInfo = req.body;
+      console.log("CHECK THE BODY", updateInfo);
+      const returnedMovie = await Movie.findByIdAndUpdate(movieId, updateInfo, {
+         new: true
+      })
+      res.json(returnedMovie);
+   } catch (err) {
+      console.log("Error from BE", err);
+      res.status(400).json(err);
+   }
+})
+
  module.exports = router;

@@ -27,4 +27,10 @@ export class MovieServiceService {
     const urlMovieId = this.baseURL+`/${id}`
     return this.http.get<Movies>( urlMovieId);
   }
+
+  editMovie ( movie:Movies, _id:string) {
+    const urlMovieId = this.baseURL+`/Edit/${_id}`
+    console.log(" THE URL IS" , urlMovieId);
+    return this.http.put<Movies>(urlMovieId, movie );
+  }
 }
