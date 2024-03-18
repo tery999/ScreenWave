@@ -4,6 +4,25 @@
         <div class="bottomBorder"></div>
     </div>
     <div class="informationContainer">
-
+        <div class="ImageDiv">
+            <img class="movieImage" src={{currentMovie?.picture}} alt="">
+            <div class="yearAndIconDiv">
+                <p> {{currentMovie?.year}}</p>
+                <fa-icon class="calendarIcon" [icon]="faCalendarDays"></fa-icon>
+            </div>
+            <p class="genres">{{currentMovie?.genre}}</p>
+        </div>
+        <div class="details">
+            <div class="staff">
+                <p *ngIf="currentMovie?.actors">Actors: {{currentMovie?.actors}}</p>
+                <p *ngIf="currentMovie?.director">Director: {{currentMovie?.director}}</p>
+            </div>
+            <section *ngIf="!seeMore" class="summarySection">
+                {{summary | slice:0:2000}} <button *ngIf="summary.length>=2000" (click)="seeMoreClickFunction()" class="seeMore">See More</button>
+            </section>
+            <section *ngIf="seeMore" class="summarySection">
+                {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button>
+            </section>
+        </div>
     </div>
 </div>
