@@ -18,11 +18,20 @@
                 <p *ngIf="currentMovie?.director">Director: {{currentMovie?.director}}</p>
             </div>
             <section *ngIf="!seeMore" class="summarySection">
-                {{summary | slice:0:2000}} <button *ngIf="summary.length>=2000" (click)="seeMoreClickFunction()" class="seeMore">See More</button>
+                <div class="upperBorderSummary"></div>
+               <p>{{summary | slice:0:2000}} <button *ngIf="summary.length>=2000" (click)="seeMoreClickFunction()" class="seeMore">See More</button> </p> 
             </section>
             <section *ngIf="seeMore" class="summarySection">
-                {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button>
+                <div class="upperBorderSummary"></div>
+               <p> {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button> </p> 
             </section>
         </div>
+    </div>
+    <div class="editDeleteButtons">
+        <button class="buttons edit">Edit</button>
+        <a [routerLink]="['/Edit', currentMovie?._id]">
+            <button class="buttons delete">Delete</button>
+        </a>
+
     </div>
 </div>

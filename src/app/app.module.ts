@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { MovieListComponentComponent } from './components/catalog/movie-list-component/movie-list-component.component';
 import { DetailsPageComponent } from './components/details-page/details-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditMoviePageComponent } from './components/edit-movie-page/edit-movie-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CatalogComponent,
     MovieListComponentComponent,
     DetailsPageComponent,
+    EditMoviePageComponent,
   ],
   imports: [
     BrowserModule,

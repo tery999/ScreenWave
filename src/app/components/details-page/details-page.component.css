@@ -25,10 +25,13 @@ h1 {
 }
 
 .bottomBorder {
-    border-bottom: 10px solid orangered;
+    position: relative;
+    bottom: 8px;
+    border-bottom: 8px solid orangered;
     height: 1px;
     width: 50%;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .informationContainer {
@@ -84,12 +87,17 @@ h1 {
 .staff {
     display: flex;
     justify-content: center;
+    gap: 20px;
     max-width: 500px;
 }
 
 .summarySection {
     max-width: 700px;
-    max-height: 500px;
+    text-indent: 15px;
+}
+
+.summarySection p {
+    margin-top: 5px;
 }
 
 .seeMore {
@@ -101,4 +109,22 @@ h1 {
 
 .seeMore:hover{
     font-weight: bold;
+}
+
+.upperBorderSummary {
+    border-bottom: 3px solid orangered;
+    width: 60px;
+}
+
+.editDeleteButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.buttons {
+    width: 120px;
+    height: 35px;
 }
