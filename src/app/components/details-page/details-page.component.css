@@ -1,0 +1,32 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Contrail+One&display=swap');
+
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: "Contrail One";
+    font-size: 45px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.titleDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.bottomBorder {
+    border-bottom: 10px solid orangered;
+    height: 1px;
+    width: 50%;
+    border-radius: 10px;
+}

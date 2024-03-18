@@ -13,7 +13,7 @@ export class CatalogComponent implements OnInit {
 
   Allmovies: Movies[]=[];
   currentMovies: any[] = [];
-  searchMovie: string = "hi";
+  searchMovie: string = "";
 
   onClickSearch() {
     debugger;
