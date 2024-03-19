@@ -1,4 +1,4 @@
-<div class="container">
+<div *ngIf="currentMovie?.name" class="container">
     <div class="titleDiv">
         <h1>{{currentMovie?.name}}</h1>
         <div class="bottomBorder"></div>
@@ -35,3 +35,12 @@
 
     </div>
 </div>
+<div class="noMatchContainer">
+    <div class="noMatch" *ngIf="!currentMovie?.name">
+        <p class="notExistPar">Movie Doesn't Exist :(</p>
+        <a routerLink="/Catalog">
+            <button> Go Back</button>
+        </a>
+    </div>
+</div>
+
