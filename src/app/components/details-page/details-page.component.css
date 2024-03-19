@@ -14,6 +14,7 @@ h1 {
     font-size: 45px;
     margin-bottom: 5px;
     margin-top: 5px;
+    color: white;
 }
 
 .titleDiv {
@@ -36,10 +37,14 @@ h1 {
 
 .informationContainer {
     display: flex;
+    padding: 20px;
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 5px;
+    min-width: 500px;
     gap: 20px;
+    background-color: white;
+    border: 5px solid #FD2D00;
 }
 
 .movieImage {
