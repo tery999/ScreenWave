@@ -33,4 +33,9 @@ export class MovieServiceService {
     console.log(" THE URL IS" , urlMovieId);
     return this.http.put<Movies>(urlMovieId, movie );
   }
+
+  deleteMovie (id:string) {
+    const urlMovieId = this.baseURL+`/Delete/${id}`
+    return this.http.delete(urlMovieId);
+  }
 }

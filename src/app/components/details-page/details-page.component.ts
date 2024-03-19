@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
@@ -12,8 +12,12 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 export class DetailsPageComponent implements OnInit{
   faCalendarDays = faCalendarDays;
   currentMovie: Movies | undefined;
+  // need to add check if subscription is done/hasError, otherwise the "MovieDoesntExist" photo is shown in the 
+  //beginning for a split second
+  isLoaded: boolean = false;
+
   summary:string = "";
-  constructor(private route:ActivatedRoute , private movieService:MovieServiceService) {
+  constructor(private route:ActivatedRoute , private movieService:MovieServiceService , private router: Router) {
 
   }
 
@@ -24,11 +28,21 @@ export class DetailsPageComponent implements OnInit{
     this.seeMore = !this.seeMore;
   }
 
+  deleteMovieFunction() {
+    const deleteId = this.currentMovie?._id as string;
+    this.movieService.deleteMovie(deleteId).subscribe();
+    this.router.navigateByUrl("/Catalog")
+  }
+
   ngOnInit(): void {
+    debugger;
     const currentId = this.route.snapshot.params["id"];
     this.movieService.getOneMovie(currentId).subscribe ( (movie) => {
       this.currentMovie = movie;
       this.summary = this.currentMovie.summary as string
-    })
+    },(error) => {
+      this.isLoaded = true;
+    }
+    )
   }
 }
