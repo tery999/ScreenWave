@@ -5,13 +5,17 @@ import { HomeComponent } from './components/home/home.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { DetailsPageComponent } from './components/details-page/details-page.component';
 import { EditMoviePageComponent } from './components/edit-movie-page/edit-movie-page.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   { path: "AddMovie" , component:AddMoviePageComponent},
   {path: "Catalog", component:CatalogComponent},
   {path: "Movies/:id", component: DetailsPageComponent},
   {path: "", component:HomeComponent},
-  {path: "Edit/:id", component:EditMoviePageComponent}
+  {path: "Edit/:id", component:EditMoviePageComponent},
+  {path: "Register" , component: RegisterComponent},
+  {path: "Login", component: LoginComponent}
 
 ];
 

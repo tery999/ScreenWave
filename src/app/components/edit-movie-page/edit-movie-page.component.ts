@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder , Validators} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
-import { trimValidator } from './EditMovieCustomVal';
+import { minusValidator, trimValidator } from './EditMovieCustomVal';
 import { Movies } from 'src/app/interfaces/Movies';
 
 @Component({
@@ -21,7 +21,7 @@ export class EditMoviePageComponent implements OnInit {
     name: ["", [Validators.required, trimValidator, Validators.maxLength(30)]],
     picture: ["", [Validators.required, trimValidator]],
     genre:["", [Validators.required, trimValidator,Validators.maxLength(30)]],
-    year: [0, [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+    year: [0, [Validators.required, Validators.minLength(4), Validators.maxLength(4), minusValidator]],
     summary:["", Validators.required],
     actors: "",
     director: ""

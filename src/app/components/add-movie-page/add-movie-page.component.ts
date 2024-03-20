@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
-import { trimValidator } from './AddMovieCustomVal';
+import { minusValidator, trimValidator } from './AddMovieCustomVal';
 import { Router } from '@angular/router';
 
 
@@ -21,7 +21,7 @@ export class AddMoviePageComponent {
   name: ["", [Validators.required, trimValidator, Validators.maxLength(30)]],
   picture: ["", [Validators.required, trimValidator]],
   genre:["", [Validators.required, trimValidator,Validators.maxLength(30)]],
-  year: ["", [Validators.required, Validators.minLength(4), Validators.maxLength(4)]],
+  year: ["", [Validators.required, minusValidator, Validators.minLength(4), Validators.maxLength(4)]],
   summary:["", Validators.required],
   actors: "",
   director: ""

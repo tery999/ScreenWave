@@ -14,6 +14,8 @@ import { MovieListComponentComponent } from './components/catalog/movie-list-com
 import { DetailsPageComponent } from './components/details-page/details-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditMoviePageComponent } from './components/edit-movie-page/edit-movie-page.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { EditMoviePageComponent } from './components/edit-movie-page/edit-movie-
     MovieListComponentComponent,
     DetailsPageComponent,
     EditMoviePageComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

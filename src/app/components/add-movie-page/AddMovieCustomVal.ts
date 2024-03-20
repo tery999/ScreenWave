@@ -9,5 +9,15 @@ export function trimValidator(control: AbstractControl) {
     }
 
     return null;
+ 
+}
 
+export function minusValidator(control: AbstractControl) {
+    const controlValue = control.value;
+    if (controlValue < 0 ) {
+       return {
+        minusValidator: true,
+       } 
+    }
+    return null;
 }
