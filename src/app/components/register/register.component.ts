@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
+import { comparePasswords } from './ValidatorComparePass';
 
 @Component({
   selector: 'app-register',
@@ -16,8 +17,9 @@ export class RegisterComponent {
   registerForm = this.fb.group ( {
     name: ["", [Validators.required, trimValidator, Validators.maxLength(20)]],
     password: ["", [Validators.required, trimValidator, Validators.maxLength(30), Validators.minLength(5)]],
-    rePassword: ["", [Validators.required, trimValidator]]
-  })
+    rePassword: ["", [Validators.required, trimValidator]],
+    // otherwise it deprecates the group. Dont know why, but this fixes it
+  }, { validator: comparePasswords} as AbstractControlOptions)
 
   isSubmitted:boolean = false;
 
