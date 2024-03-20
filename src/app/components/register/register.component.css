@@ -59,3 +59,11 @@ input[type]:focus {
 .errorArea {
     border: 2px solid red !important;
 }
+
+.button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 150px;
+    font-size: 18px;
+}
