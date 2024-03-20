@@ -3,6 +3,8 @@ import { AbstractControlOptions, FormBuilder, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
 import { comparePasswords } from './ValidatorComparePass';
+import { Users } from 'src/app/interfaces/Users';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { comparePasswords } from './ValidatorComparePass';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
-  constructor( private fb: FormBuilder, private router: Router){
+  constructor( private fb: FormBuilder, private router: Router, private userService: UserServiceService){
 
   }
 
@@ -35,6 +37,16 @@ export class RegisterComponent {
 
   onSubmit(){
     this.isSubmitted = true;
+    if (this.registerForm.valid) {
+      const regBody: Users = { 
+        username: this.name?.value as unknown as string,
+        password: this.password?.value as unknown as string
+      }
+      console.log("FE REG INFO IS", regBody);
+      this.userService.registerUser(regBody).subscribe( (token)=> {
+        console.log("TOKEN RETURNED IS", token)
+      })
+    }
   }
   
 }
