@@ -24,6 +24,7 @@ export class RegisterComponent {
   }, { validator: comparePasswords} as AbstractControlOptions)
 
   isSubmitted:boolean = false;
+  serverReturnedError:string ="";
 
   get name(){
     return this.registerForm.get("name");
@@ -43,8 +44,15 @@ export class RegisterComponent {
         password: this.password?.value as unknown as string
       }
       console.log("FE REG INFO IS", regBody);
-      this.userService.registerUser(regBody).subscribe( (token)=> {
-        console.log("TOKEN RETURNED IS", token)
+      this.userService.registerUser(regBody).subscribe( {
+        next: (token) => {
+          console.log("RETURNED TOKEN",token)
+        },
+        error: (err) => {
+          console.log("RETURNED ERROR", err.error.message);
+          this.serverReturnedError = err.error.message;
+        }
+       
       })
     }
   }

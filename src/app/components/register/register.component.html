@@ -30,6 +30,7 @@
                     type="password" formControlName="rePassword">
                 <p class="errorMessage" *ngIf=" registerForm.errors?.['mismatch'] && isSubmitted"> Passwords dont match
                 </p>
+                <p class="errorMessage" *ngIf="serverReturnedError ==='Username already in use' "> Username already exists</p>
             </div>
 
             <button class="button" type="submit"> Register </button>
