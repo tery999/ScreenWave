@@ -13,41 +13,50 @@ import { json } from 'express';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor( private fb: FormBuilder, private router: Router, private userService: UserServiceService){
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserServiceService) {
 
   }
 
-  loginForm = this.fb.group ( {
+  loginForm = this.fb.group({
     name: ["", [Validators.required, trimValidator, Validators.maxLength(20)]],
     password: ["", [Validators.required, trimValidator, Validators.maxLength(30), Validators.minLength(5)]],
     // otherwise it deprecates the group. Dont know why, but this fixes it
-  } )
+  })
 
-  isSubmitted:boolean = false;
-  serverReturnedError:string ="";
-  testInfo:any = "";
+  isSubmitted: boolean = false;
+  serverReturnedError: string = "";
 
-  get name(){
+  get name() {
     return this.loginForm.get("name");
-   }
-  get password(){
+  }
+  get password() {
     return this.loginForm.get("password")
   }
 
 
-  onSubmit(){
+  onSubmit() {
     this.isSubmitted = true;
     if (this.loginForm.valid) {
-      const regBody: Users = { 
+      const regBody: Users = {
         username: this.name?.value as unknown as string,
         password: this.password?.value as unknown as string
       }
       console.log("FE REG INFO IS", regBody);
-      this.userService.loginUser(regBody).subscribe( (token)=>{
-        localStorage.setItem("token", JSON.stringify(token));
+      this.userService.loginUser(regBody).subscribe( {
+        next: (token) => {
+          localStorage.setItem("token", JSON.stringify(token));
+          this.router.navigateByUrl("/Catalog");
+        },
+        error: (err) => {
+          console.log("This is the returned error", err.error);
+          console.log("This is the returned error", err.status);
+          this.serverReturnedError = err.status;
+        
+        }
       })
     }
+
   }
-  
+
 }
 

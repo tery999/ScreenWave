@@ -47,6 +47,7 @@ export class RegisterComponent {
       this.userService.registerUser(regBody).subscribe( {
         next: (token) => {
           console.log("RETURNED TOKEN",token)
+          this.router.navigateByUrl("/Catalog");
         },
         error: (err) => {
           console.log("RETURNED ERROR", err.error.message);
