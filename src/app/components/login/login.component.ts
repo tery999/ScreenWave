@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { Users } from 'src/app/interfaces/Users';
 import { BehaviorSubject } from 'rxjs';
+import { json } from 'express';
 
 @Component({
   selector: 'app-login',
@@ -43,7 +44,7 @@ export class LoginComponent {
       }
       console.log("FE REG INFO IS", regBody);
       this.userService.loginUser(regBody).subscribe( (token)=>{
-        console.log("THIS IS RETURNED TOKEN", token);
+        localStorage.setItem("token", JSON.stringify(token));
       })
     }
   }

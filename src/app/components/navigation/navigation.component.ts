@@ -8,19 +8,20 @@ import { UserServiceService } from 'src/app/services/user-service.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit{
-  constructor ( private userService: UserServiceService) {}
-  get isLogged() {
-    return this.userService.checkLoggedIn();
+  isLoggedIn:boolean = false;
+  constructor ( private userService: UserServiceService) {
   }
 
+
   logoutFunc() {
+    console.log(this.isLoggedIn);
     this.userService.logoutUser();
+    localStorage.removeItem("token");
   }
 
   ngOnInit(): void {
-  // this.userService.checkLoggedIn().subscribe ( (info) => {
-  //   console.log("RETURNED INFO", info)
-  //   this.isLogged = info;
-  // })
+  this.userService.checkLoggedIn().subscribe ( (log)=> {
+    this.isLoggedIn = log 
+  })
   }
 }

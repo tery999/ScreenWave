@@ -9,33 +9,54 @@ import { BehaviorSubject , Observable, tap , of} from 'rxjs';
 export class UserServiceService {
 
   constructor( private http: HttpClient ) { 
-    this.userObservable.subscribe ( (user) => {
-      this.user = user;
-    })
+    // this.userObservable.subscribe ( (user) => {
+    //   this.user = user;
+    // })
   }
 
-  userSubject = new BehaviorSubject<any>(undefined);
+  userSubject = new BehaviorSubject<boolean>(this.existingToken);
   userObservable = this.userSubject.asObservable();
-  user:any = undefined;
+  // user:any = undefined;
 
-  get getUserId():string{
-    return this.user.userId;
+  // get getUserId():string{
+  //   return this.user.userId;
+  // }
+
+  // get userToken():string {
+  //   return this.user.token;
+  // }
+
+  private get existingToken():boolean {
+    debugger;
+    let doesExist = localStorage.getItem("token");
+    if (doesExist) {
+      return true
+    } else {
+      return false;
+    }
   }
 
-  get userToken():string {
-    return this.user.token;
+  checkLoggedIn():Observable<boolean> {
+    return this.userObservable
   }
 
-  checkLoggedIn():boolean {
-    return !!this.user
-  }
+  // loginUser(loginInfo:Users) {
+  //   debugger;
+  //   const loginURL = "http://localhost:3030/Users/Login";
+  //   return this.http.post(loginURL,loginInfo).pipe
+  //   (tap( (token) => {
+  //     this.userSubject.next(token);
+  //     })
+  //   )
+
+  // }
 
   loginUser(loginInfo:Users) {
     debugger;
     const loginURL = "http://localhost:3030/Users/Login";
     return this.http.post(loginURL,loginInfo).pipe
     (tap( (token) => {
-      this.userSubject.next(token);
+      this.userSubject.next(true);
       })
     )
 
@@ -48,7 +69,20 @@ export class UserServiceService {
   }
 
   logoutUser() {
-    this.userSubject.next(undefined);
+    this.userSubject.next(false);
+  }
+
+  get getToken() {
+    let userData= (localStorage.getItem('token'))
+    let parsedInfo= JSON.parse(userData as string);
+    return parsedInfo.token;
+
+  }
+
+  get getUserId() {
+    let userData= (localStorage.getItem('token'))
+    let parsedInfo= JSON.parse(userData as string);
+    return parsedInfo.userId;
   }
 
 }
