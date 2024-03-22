@@ -4,6 +4,7 @@ import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
 import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { Users } from 'src/app/interfaces/Users';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ export class LoginComponent {
 
   isSubmitted:boolean = false;
   serverReturnedError:string ="";
+  testInfo:any = "";
 
   get name(){
     return this.loginForm.get("name");
@@ -40,16 +42,9 @@ export class LoginComponent {
         password: this.password?.value as unknown as string
       }
       console.log("FE REG INFO IS", regBody);
-      // this.userService.registerUser(regBody).subscribe( {
-      //   next: (token) => {
-      //     console.log("RETURNED TOKEN",token)
-      //   },
-      //   error: (err) => {
-      //     console.log("RETURNED ERROR", err.error.message);
-      //     this.serverReturnedError = err.error.message;
-      //   }
-       
-      // })
+      this.userService.loginUser(regBody).subscribe( (token)=>{
+        console.log("THIS IS RETURNED TOKEN", token);
+      })
     }
   }
   

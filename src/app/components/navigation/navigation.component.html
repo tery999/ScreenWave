@@ -1,18 +1,30 @@
 <div class="NavBar">
+  <div *ngIf="isLogged()d" class="Protected">
     <a routerLink="/">
-        Home
-      </a>
-      <a routerLink="Catalog">
-        Catalog
-      </a>
-      <a routerLink="AddMovie">
-        Add movie
-      </a>
-      <a routerLink="Login">
-        Login
-      </a>
-      <a routerLink="Register">
-        Register
-      </a>
+      Home
+    </a>
+    <a routerLink="Catalog">
+      Catalog
+    </a>
+    <a routerLink="AddMovie">
+      Add movie
+    </a>
+    <button (click)="logoutFunc()">
+      Logout
+    </button>
+  </div>
+  <div *ngIf="!isLogged()" class="Open">
+    <a routerLink="/">
+      Home
+    </a>
+    <a routerLink="Catalog">
+      Catalog
+    </a>
+    <a routerLink="Login">
+      Login
+    </a>
+    <a routerLink="Register">
+      Register
+    </a>
+  </div>
 </div>
-
