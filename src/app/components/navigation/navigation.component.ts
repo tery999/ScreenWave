@@ -9,8 +9,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class NavigationComponent implements OnInit{
   constructor ( private userService: UserServiceService) {}
-
-  isLogged() {
+  get isLogged() {
     return this.userService.checkLoggedIn();
   }
 
@@ -19,7 +18,7 @@ export class NavigationComponent implements OnInit{
   }
 
   ngOnInit(): void {
-  // this.userService.isLoggedIn().subscribe ( (info) => {
+  // this.userService.checkLoggedIn().subscribe ( (info) => {
   //   console.log("RETURNED INFO", info)
   //   this.isLogged = info;
   // })

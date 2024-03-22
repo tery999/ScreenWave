@@ -1,3 +1,4 @@
+
 export interface Movies {
     _id?: string,
     name: string,
@@ -6,5 +7,6 @@ export interface Movies {
     picture: string,
     summary: string,
     actors: string,
-    director: string
+    director: string,
+    ownerId?: string
 }

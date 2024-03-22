@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-details-page',
@@ -11,21 +12,28 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 })
 export class DetailsPageComponent implements OnInit{
   faCalendarDays = faCalendarDays;
-  currentMovie: Movies | undefined;
+  currentMovie: Movies|undefined;
   // need to add check if subscription is done/hasError, otherwise the "MovieDoesntExist" photo is shown in the 
   //beginning for a split second
   isLoaded: boolean = false;
+  movieId: string = "";
 
   summary:string = "";
-  constructor(private route:ActivatedRoute , private movieService:MovieServiceService , private router: Router) {
+  constructor(private route:ActivatedRoute , 
+    private movieService:MovieServiceService , 
+    private router: Router , 
+    private userService:UserServiceService) {
 
   }
+
+  currentUserId:string = "";
 
   seeMore:boolean = false;
 
   seeMoreClickFunction() {
     console.log("Button Clicked");
     this.seeMore = !this.seeMore;
+    console.log("CHECK THE USER ID", this.currentUserId)
   }
 
   deleteMovieFunction() {
@@ -40,9 +48,11 @@ export class DetailsPageComponent implements OnInit{
     this.movieService.getOneMovie(currentId).subscribe ( (movie) => {
       this.currentMovie = movie;
       this.summary = this.currentMovie.summary as string
+      this.movieId = this.currentMovie._id as string
     },(error) => {
       this.isLoaded = true;
     }
     )
+    this.currentUserId = this.userService.getUserId;
   }
 }

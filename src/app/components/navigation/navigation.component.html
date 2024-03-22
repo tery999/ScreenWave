@@ -1,5 +1,5 @@
 <div class="NavBar">
-  <div *ngIf="isLogged()d" class="Protected">
+  <div *ngIf="isLogged" class="Protected">
     <a routerLink="/">
       Home
     </a>
@@ -13,7 +13,7 @@
       Logout
     </button>
   </div>
-  <div *ngIf="!isLogged()" class="Open">
+  <div *ngIf="!isLogged" class="Open">
     <a routerLink="/">
       Home
     </a>

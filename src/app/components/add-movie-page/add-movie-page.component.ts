@@ -4,6 +4,7 @@ import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { minusValidator, trimValidator } from './AddMovieCustomVal';
 import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-movie-page.component.css']
 })
 export class AddMoviePageComponent {
- constructor ( private fb:FormBuilder, private movieService: MovieServiceService , private router:Router) {
+ constructor ( private fb:FormBuilder, private movieService: MovieServiceService , private router:Router,
+  private userService: UserServiceService) {
 
  }
 
@@ -50,11 +52,13 @@ export class AddMoviePageComponent {
   return this.addMovieForm.get("summary");
  }
 
+ userId = this.userService.getUserId;
+
  onSubmit() {
   this.isSubmitted = true;
   console.log(this.addMovieForm.getRawValue());
   if ( this.addMovieForm.valid ) {
-    const body:Movies = this.addMovieForm.value as unknown as Movies;
+    const body:Movies = {...this.addMovieForm.value as unknown as Movies , ownerId: this.userId};
     this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
     this.router.navigateByUrl("/Catalog");
   }

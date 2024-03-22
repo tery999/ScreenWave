@@ -8,8 +8,6 @@ import { BehaviorSubject , Observable, tap , of} from 'rxjs';
 })
 export class UserServiceService {
 
-  user:any = undefined;
-
   constructor( private http: HttpClient ) { 
     this.userObservable.subscribe ( (user) => {
       this.user = user;
@@ -18,9 +16,18 @@ export class UserServiceService {
 
   userSubject = new BehaviorSubject<any>(undefined);
   userObservable = this.userSubject.asObservable();
+  user:any = undefined;
+
+  get getUserId():string{
+    return this.user.userId;
+  }
+
+  get userToken():string {
+    return this.user.token;
+  }
 
   checkLoggedIn():boolean {
-    return !!this.user;
+    return !!this.user
   }
 
   loginUser(loginInfo:Users) {
