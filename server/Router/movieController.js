@@ -1,6 +1,12 @@
 const express = require("express");
 const Movie = require("../models/Movies");
 const router = express.Router();
+const AuthenticationMIddleware = require("../AuthenticationMiddleware");
+
+//need auth middleware only for these movie routes
+router.post("*", AuthenticationMIddleware);
+router.put("*", AuthenticationMIddleware);
+router.delete("*", AuthenticationMIddleware);
 
 router.get("/", async (req, res) => {
     const allMovies = await Movie.find()
