@@ -7,6 +7,7 @@ import { DetailsPageComponent } from './components/details-page/details-page.com
 import { EditMoviePageComponent } from './components/edit-movie-page/edit-movie-page.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: "AddMovie" , component:AddMoviePageComponent},
@@ -15,8 +16,8 @@ const routes: Routes = [
   {path: "", component:HomeComponent},
   {path: "Edit/:id", component:EditMoviePageComponent},
   {path: "Register" , component: RegisterComponent},
-  {path: "Login", component: LoginComponent}
-
+  {path: "Login", component: LoginComponent},
+  {path: "**", component: NotFoundComponent} 
 ];
 
 @NgModule({

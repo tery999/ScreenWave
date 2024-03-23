@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { minusValidator, trimValidator } from './EditMovieCustomVal';
 import { Movies } from 'src/app/interfaces/Movies';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-edit-movie-page',
@@ -13,7 +14,7 @@ import { Movies } from 'src/app/interfaces/Movies';
 export class EditMoviePageComponent implements OnInit {
   constructor ( private fb:FormBuilder, 
     private movieService: MovieServiceService , 
-    private router:Router , private route:ActivatedRoute ) {
+    private router:Router , private route:ActivatedRoute , private userService: UserServiceService) {
   }
 
   editMovieForm = this.fb.group({
@@ -28,7 +29,8 @@ export class EditMoviePageComponent implements OnInit {
    })
   
    isSubmitted:boolean = false;
-  MovieId: string = ""
+    MovieId: string = ""
+    userId:string = this.userService.getUserId;
   
    //There should be an easier way that typing all value's get manually
    get name(){
@@ -75,6 +77,9 @@ export class EditMoviePageComponent implements OnInit {
     this.movieService.getOneMovie(currentId).subscribe( (movieData)=> {
       this.editMovieForm.patchValue(movieData)
       this.MovieId = movieData._id as string;
+      if (movieData.ownerId !== this.userId) {
+        this.router.navigateByUrl('/Catalog');
+      }
       // console.log("Check Movie Id", movieData._id);
       // console.log("Check MovieId", this.MovieId);
     })
