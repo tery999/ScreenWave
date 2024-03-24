@@ -14,6 +14,17 @@ router.get("/", async (req, res) => {
     res.json(allMovies);
  })
 
+ router.get("/Random", async (req, res) => {
+   try {
+      const randomMovie = await Movie.aggregate([{ $sample: { size: 1}}]);
+      console.log(randomMovie);
+      res.json(randomMovie[0]);
+   } catch (err) {
+      res.status(400).json(err);
+   }
+
+ })
+
  router.get("/:id", async (req, res) => {
    try {
       const id = req.params.id;

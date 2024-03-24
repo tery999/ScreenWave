@@ -38,4 +38,9 @@ export class MovieServiceService {
     const urlMovieId = this.baseURL+`/Delete/${id}`
     return this.http.delete(urlMovieId);
   }
+
+  randomMovie() {
+    const randomURL = this.baseURL+`/Random`;
+    return this.http.get<Movies>(randomURL);
+  }
 }
