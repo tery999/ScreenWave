@@ -27,7 +27,7 @@
             </section>
         </div>
     </div>
-    <div *ngIf="currentMovie?.ownerId === currentUserId" class="editDeleteButtons">
+    <div *ngIf="currentUserId && currentMovie?.ownerId === currentUserId" class="editDeleteButtons">
         <button class="buttons delete" (click)="deleteMovieFunction()">Delete</button>
         <a [routerLink]="['/Edit', currentMovie?._id]">
             <button class="buttons edit">Edit</button>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
@@ -9,7 +10,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class NavigationComponent implements OnInit{
   isLoggedIn:boolean = false;
-  constructor ( private userService: UserServiceService) {
+  constructor ( private userService: UserServiceService, private router:Router) {
   }
 
 
@@ -17,6 +18,7 @@ export class NavigationComponent implements OnInit{
     console.log(this.isLoggedIn);
     this.userService.logoutUser();
     localStorage.removeItem("token");
+    this.router.navigateByUrl("/Catalog")
   }
 
   ngOnInit(): void {

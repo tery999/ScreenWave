@@ -23,10 +23,9 @@ export class DetailsPageComponent implements OnInit{
     private movieService:MovieServiceService , 
     private router: Router , 
     private userService:UserServiceService) {
-
   }
 
-  currentUserId:string = "";
+  currentUserId:string|null = "";
 
   seeMore:boolean = false;
 

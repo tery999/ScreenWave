@@ -82,7 +82,12 @@ export class UserServiceService {
   get getUserId() {
     let userData= (localStorage.getItem('token'))
     let parsedInfo= JSON.parse(userData as string);
-    return parsedInfo.userId;
+    if (parsedInfo) {
+      return parsedInfo.userId;
+    }
+    else {
+      return null
+    }
   }
 
 }
