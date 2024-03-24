@@ -1,9 +1,20 @@
 <div class="homeContainer">
     <div class="homeDesc">
-       <h1>ScreenWave</h1>
-       <p></p>
+        <h1>ScreenWave</h1>
+        <p>A place where you can track your favourite movies, <br>
+            where you can discover the newest releases, <br>
+            or go back in time and remember the endless classics.
+        </p>
     </div>
-    <div>
-        <img class="homeImg" src={{randomMovie?.picture}} alt="">
+    <div class="borderDiv">
+        <a [routerLink]="['/Movies', randomMovie?._id ]">
+            <div class="imageDiv">
+                <img class="homeImg" src={{randomMovie?.picture}} alt="">
+                <div class="overlayDiv">
+                    <p class="check">Check our movies</p>
+                    <div class="bottomBorder"></div>
+                </div>
+            </div>
+        </a>
     </div>
 </div>

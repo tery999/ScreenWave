@@ -33,6 +33,7 @@ a {
 }
 
 .Button {
+    cursor: pointer;
     position: relative;
     width: 200px;
     height: 40px;
