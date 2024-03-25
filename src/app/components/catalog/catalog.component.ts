@@ -30,6 +30,7 @@ export class CatalogComponent implements OnInit {
 
   ngOnInit(): void {
     this.movieService.getAllMovies().subscribe( (movies) => {
+      console.log(movies, "HERE ARE THE MOVIES");
       this.Allmovies = movies
       this.currentMovies = movies
     })

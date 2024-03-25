@@ -1,17 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { trimValidator } from '../../add-movie-page/AddMovieCustomVal';
 import { CommentsService } from 'src/app/services/comments.service';
+import { Comments } from 'src/app/interfaces/Comments';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.component.html',
   styleUrls: ['./comments.component.css']
 })
-export class CommentsComponent {
+export class CommentsComponent implements OnInit {
   @Input() currentUserId!: string|undefined|null;
-  @Input() movieId!: string|undefined|null;
-  constructor(private fb:FormBuilder , private commentService:CommentsService) {
+  // Not working, ngOnInit firing before input completes >:(
+  // @Input() movieId!: string;
+  movieId:string|undefined;
+  allCurrentComments: Comments[] = [];
+  constructor(private fb:FormBuilder , private commentService:CommentsService, private route:ActivatedRoute) {
 
   }
   addCommentForm = this.fb.group( {
@@ -35,5 +40,13 @@ export class CommentsComponent {
     this.commentService.addComment(comment, movieId ,ownerId).subscribe();
   }
   }
-
+  ngOnInit(): void {
+    this.movieId= this.route.snapshot.params["id"];
+    if ( this.movieId) {
+      this.commentService.getAllComments(this.movieId).subscribe( (comments)=> {
+        console.log("HERE ARE THE COMMENTS", comments);
+        this.allCurrentComments = comments;
+      })
+    }
+  }
 }

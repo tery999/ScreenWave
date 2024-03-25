@@ -77,8 +77,20 @@ router.post("/Comments/:id/Add", async (req, res) => {
       const movieId = req.params.id;
       const commentInfo = req.body;
       console.log("COMMENTS INFO", commentInfo)
-      updatedMovie = await Movie.findByIdAndUpdate(movieId , { $push: { comments: commentInfo } });
+      updatedMovie = await Movie.findByIdAndUpdate(movieId , { $push: { comments: commentInfo } , new:true });
       res.json(updatedMovie);
+   } catch (err) {
+      res.status(400).json(err);
+   }
+});
+
+router.get("/Comments/:id/All", async (req, res) => {
+   try {
+      const movieId = req.params.id;
+      const allMovieComments = await Movie.find( {_id:movieId}, {comments:1})
+      const currentComments = allMovieComments[0].comments;
+      console.log("CURRENT MOVIE COMMENTS:", currentComments)
+      res.json(currentComments);
    } catch (err) {
       res.status(400).json(err);
    }

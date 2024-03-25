@@ -8,4 +8,9 @@
             </div>
         </form>
     </div>
+    <div *ngIf = "movieId">
+        <div *ngFor="let comment of allCurrentComments">
+            <p>{{comment.comment}}</p>
+        </div>
+    </div>
 </div>
