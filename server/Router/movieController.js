@@ -9,23 +9,23 @@ router.put("*", AuthenticationMIddleware);
 router.delete("*", AuthenticationMIddleware);
 
 router.get("/", async (req, res) => {
-    const allMovies = await Movie.find()
-    console.log(allMovies);
-    res.json(allMovies);
- })
+   const allMovies = await Movie.find()
+   console.log(allMovies);
+   res.json(allMovies);
+})
 
- router.get("/Random", async (req, res) => {
+router.get("/Random", async (req, res) => {
    try {
-      const randomMovie = await Movie.aggregate([{ $sample: { size: 1}}]);
+      const randomMovie = await Movie.aggregate([{ $sample: { size: 1 } }]);
       console.log(randomMovie);
       res.json(randomMovie[0]);
    } catch (err) {
       res.status(400).json(err);
    }
 
- })
+})
 
- router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
    try {
       const id = req.params.id;
       const allMovies = await Movie.findById(id)
@@ -34,16 +34,16 @@ router.get("/", async (req, res) => {
    } catch (err) {
       res.status(400).json(err);
    }
- 
+
 })
 
- router.post("/Add", async (req, res) => {
-    const movieInfo = req.body;
-    await Movie.create(movieInfo);
-    res.status(200).send("Movie Added");
- })
+router.post("/Add", async (req, res) => {
+   const movieInfo = req.body;
+   await Movie.create(movieInfo);
+   res.status(200).send("Movie Added");
+})
 
- router.put("/Edit/:id", async (req, res) => {
+router.put("/Edit/:id", async (req, res) => {
    try {
       const movieId = req.params.id
       console.log("CHECK THE ID", movieId);
@@ -59,7 +59,7 @@ router.get("/", async (req, res) => {
    }
 })
 
-router.delete("/Delete/:id", async (req, res)=> {
+router.delete("/Delete/:id", async (req, res) => {
    try {
       const movieId = req.params.id
       await Movie.findByIdAndDelete(movieId);
@@ -67,7 +67,22 @@ router.delete("/Delete/:id", async (req, res)=> {
    } catch (err) {
       res.status(400).json(err);
    }
-
 })
 
- module.exports = router;
+//Comments Section
+
+router.post("/Comments/:id/Add", async (req, res) => {
+   console.log("COMMENTS ID POST FIRED");
+   try {
+      const movieId = req.params.id;
+      const commentInfo = req.body;
+      console.log("COMMENTS INFO", commentInfo)
+      updatedMovie = await Movie.findByIdAndUpdate(movieId , { $push: { comments: commentInfo } });
+      res.json(updatedMovie);
+   } catch (err) {
+      res.status(400).json(err);
+   }
+})
+
+
+module.exports = router;

@@ -19,11 +19,12 @@
             </div>
             <section *ngIf="!seeMore" class="summarySection">
                 <div class="upperBorderSummary"></div>
-               <p>{{summary | slice:0:2000}} <button *ngIf="summary.length>=2000" (click)="seeMoreClickFunction()" class="seeMore">See More</button> </p> 
+                <p>{{summary | slice:0:2000}} <button *ngIf="summary.length>=2000" (click)="seeMoreClickFunction()"
+                        class="seeMore">See More</button> </p>
             </section>
             <section *ngIf="seeMore" class="summarySection">
                 <div class="upperBorderSummary"></div>
-               <p> {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button> </p> 
+                <p> {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button> </p>
             </section>
         </div>
     </div>
@@ -44,3 +45,4 @@
     </div>
 </div>
 
+<app-comments [currentUserId]="currentUserId" [movieId]="movieId"></app-comments>

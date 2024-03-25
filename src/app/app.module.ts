@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.interceptor';
+import { CommentsComponent } from './components/details-page/comments/comments.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.in
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
+    CommentsComponent,
   ],
   imports: [
     BrowserModule,

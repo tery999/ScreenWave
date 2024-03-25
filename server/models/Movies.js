@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
-const User = require('./Users')
+const User = require('./Users');
+const Comment = require("./Comments");
+
+const commentSchema = new mongoose.Schema({
+  owner: String, 
+  comment: String
+});
 
 
 const moviesSchema = new mongoose.Schema({
@@ -11,6 +17,7 @@ const moviesSchema = new mongoose.Schema({
   actors: String,
   director: String,
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: User },
+  comments: [commentSchema]
 
 }, 
 { timestamps: true });

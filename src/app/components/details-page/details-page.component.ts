@@ -4,6 +4,8 @@ import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import { FormBuilder, Validators } from '@angular/forms';
+import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
 
 @Component({
   selector: 'app-details-page',
@@ -17,17 +19,16 @@ export class DetailsPageComponent implements OnInit{
   //beginning for a split second
   isLoaded: boolean = false;
   movieId: string = "";
-
   summary:string = "";
+  currentUserId:string|null = "";
+  seeMore:boolean = false;
+
   constructor(private route:ActivatedRoute , 
     private movieService:MovieServiceService , 
     private router: Router , 
-    private userService:UserServiceService) {
+    private userService:UserServiceService,
+    private fb: FormBuilder) {
   }
-
-  currentUserId:string|null = "";
-
-  seeMore:boolean = false;
 
   seeMoreClickFunction() {
     console.log("Button Clicked");

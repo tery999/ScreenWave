@@ -8,5 +8,6 @@ export interface Movies {
     summary: string,
     actors: string,
     director: string,
-    ownerId?: string
+    ownerId?: string,
+    comments?: string[],
 }

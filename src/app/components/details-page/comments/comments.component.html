@@ -1,0 +1,11 @@
+<div class="commentContainer">
+    <div class="addComment">
+        <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()" >
+            <textarea id="comment" [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''" type="text"
+            formControlName="comment"> </textarea>
+            <div class="buttonDiv">
+                <button class="button" type="submit"> Add </button>
+            </div>
+        </form>
+    </div>
+</div>
