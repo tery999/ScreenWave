@@ -1,6 +1,7 @@
 # ScreenWave
 
 Angular project.
+A site, which acts as a data base for movies.
 
 ## Development server
 
