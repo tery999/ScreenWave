@@ -43,7 +43,9 @@ export class CommentsComponent implements OnInit {
     this.commentService.addComment(comment, movieId ,ownerId).subscribe();
     // Its stupid to call all comments, whenever I add a new comment,
     // but this is the only solution I have right now
-    this.allCurrentComments = this.commentService.getAllComments(movieId);
+    setTimeout(() => {
+      this.allCurrentComments = this.commentService.getAllComments(movieId);
+    }, 1000);
   }
   }
   ngOnInit(): void {

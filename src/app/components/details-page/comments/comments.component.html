@@ -9,8 +9,8 @@
         </form>
     </div>
     <div *ngIf = "movieId">
-        <div *ngIf=" allCurrentComments|async as comnts">
-            <div class="commentDiv" *ngFor="let comment of comnts">
+        <div *ngIf=" allCurrentComments">
+            <div class="commentDiv" *ngFor="let comment of( allCurrentComments | async)">
                 <p>{{comment.comment}}</p>
                 <button *ngIf="comment.owner === currentUserId"> DELETE </button>
             </div>
