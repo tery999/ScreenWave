@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Comments } from '../interfaces/Comments';
+import { UserServiceService } from './user-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserServiceService) { }
 
   getAllComments(movieId:string):Observable<Comments[]> {
     let id = movieId;
@@ -19,10 +20,13 @@ export class CommentsService {
   addComment(comment:string, movieId:string, ownerId:string){
     console.log("MOVIE ID IS", movieId)
     let id = movieId;
+    let username = this.userService.getUsername;
     const URL = `http://localhost:3030/Movies/Comments/${id}/Add`
+    debugger;
     const body = {
       comment:comment,
-      owner:ownerId
+      owner:ownerId,
+      username:username,
     }
     return this.http.post(URL, body);
   }

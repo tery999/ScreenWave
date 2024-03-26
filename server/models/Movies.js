@@ -4,7 +4,8 @@ const Comment = require("./Comments");
 
 const commentSchema = new mongoose.Schema({
   owner: String, 
-  comment: String
+  comment: String,
+  username: String
 });
 
 

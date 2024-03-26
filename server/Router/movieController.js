@@ -10,7 +10,7 @@ router.delete("*", AuthenticationMIddleware);
 
 router.get("/", async (req, res) => {
    const allMovies = await Movie.find()
-   console.log(allMovies);
+   // console.log(allMovies);
    res.json(allMovies);
 })
 
@@ -75,7 +75,12 @@ router.post("/Comments/:id/Add", async (req, res) => {
    console.log("COMMENTS ID POST FIRED");
    try {
       const movieId = req.params.id;
-      const commentInfo = req.body;
+      const {owner, comment, username} = req.body;
+      commentInfo = {
+         owner:owner,
+         comment:comment,
+         username:username
+      }
       console.log("COMMENTS INFO", commentInfo)
       updatedMovie = await Movie.findByIdAndUpdate(movieId , { $push: { comments: commentInfo } , new:true });
       res.json(updatedMovie);

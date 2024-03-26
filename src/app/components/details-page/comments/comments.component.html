@@ -1,18 +1,19 @@
 <div class="commentContainer">
     <div class="addComment">
         <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()" >
-            <textarea id="comment" [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''" type="text"
-            formControlName="comment"> </textarea>
+            <textarea class="textAreaClass" id="comment" [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''" type="text"
+            formControlName="comment" placeholder="Did you like this movie?"> </textarea>
             <div class="buttonDiv">
-                <button class="button" type="submit"> Add </button>
+                <button class="commentButton" type="submit" [disabled]="isLoading"> Comment </button>
             </div>
         </form>
     </div>
     <div *ngIf = "movieId">
         <div *ngIf=" allCurrentComments">
             <div class="commentDiv" *ngFor="let comment of( allCurrentComments | async)">
+                <p *ngIf="comment?.username">{{comment.username}}</p>
                 <p>{{comment.comment}}</p>
-                <button (click)="deleteComFunc(comment._id)" *ngIf="comment.owner === currentUserId"> DELETE </button>
+                <button [disabled]="isLoading" (click)="deleteComFunc(comment._id)" *ngIf="comment.owner === currentUserId"> DELETE </button>
             </div>
         </div>
     </div>

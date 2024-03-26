@@ -90,4 +90,15 @@ export class UserServiceService {
     }
   }
 
+  get getUsername() {
+    let userData= (localStorage.getItem('token'))
+    let parsedInfo= JSON.parse(userData as string);
+    if (parsedInfo) {
+      return parsedInfo.username;
+    }
+    else {
+      return null
+    }
+  }
+
 }

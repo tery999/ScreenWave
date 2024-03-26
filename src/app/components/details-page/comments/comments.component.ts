@@ -5,6 +5,7 @@ import { CommentsService } from 'src/app/services/comments.service';
 import { Comments } from 'src/app/interfaces/Comments';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-comments',
@@ -16,7 +17,6 @@ export class CommentsComponent implements OnInit {
   // Not working, ngOnInit firing before input completes >:(
   // @Input() movieId!: string;
   movieId = this.route.snapshot.params["id"];
-  // allCurrentComments: Comments[] = [];
   constructor(private fb: FormBuilder, private commentService: CommentsService, private route: ActivatedRoute) {
 
   }
@@ -26,6 +26,7 @@ export class CommentsComponent implements OnInit {
     comment: ["", [Validators.required, trimValidator, Validators.maxLength(300)]],
   })
   isSubmitted: boolean = false;
+  isLoading: boolean = false;
   get comment() {
     return this.addCommentForm.get("comment");
   }
@@ -34,6 +35,7 @@ export class CommentsComponent implements OnInit {
     this.isSubmitted = true;
     console.log(this.addCommentForm.getRawValue());
     if (this.addCommentForm.valid) {
+      this.isLoading = true;
       let comment = this.addCommentForm.get("comment")?.value as unknown as string;
       let ownerId = this.currentUserId as string;
       let movieId = this.movieId as string;
@@ -46,12 +48,20 @@ export class CommentsComponent implements OnInit {
       setTimeout(() => {
         // Couldnt make it work with BehaviourSubject. Will use timeout for now, until I figure it out ;_;
         this.allCurrentComments = this.commentService.getAllComments(movieId);
-      }, 1000);
+        this.isLoading = false;
+        this.addCommentForm.get("comment")?.setValue("");
+      }, 500);
     }
   }
 
   deleteComFunc(commentId:string|undefined) {
+    this.isLoading = true;
     this.commentService.deleteComment(commentId as string, this.movieId ).subscribe();
+    setTimeout(() => {
+      // Couldnt make it work with BehaviourSubject. Will use timeout for now, until I figure it out ;_;
+      this.allCurrentComments = this.commentService.getAllComments(this.movieId);
+      this.isLoading = false;
+    }, 500);
   }
   ngOnInit(): void {
   }
