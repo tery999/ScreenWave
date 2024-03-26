@@ -13,24 +13,79 @@
     align-items: center;
 }
 
+.formClass textarea, .buttonDiv{
+    z-index: 2;
+}
+
+.addComment {
+    position: relative;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.632);
+    width: 500px;
+    border-radius: 15px;
+    border: 2px solid orangered;
+}
+
+.transParent {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-image: url("../../../../assets/ghostInTheSHell.jpeg");
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
 .textAreaClass {
-    width: 450px;
-    height: 80px;
+    width: 480px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.904);
 }
 
 .commentDiv {
-    background-color: white;
+    padding: 5px;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid orange;
+    border-radius: 15px;
 }
 
 button:disabled {
-    background-color: black;
+    background-color: white;
 }
 
 .commentButton {
     width: 140px;
     height: 35px;
+    margin-top: 10px;
 }
 
 .commentButton:disabled {
     background-color: black;
+}
+
+.commentsholder {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    gap: 5px;
+    background-color: white;
+    width: 650px;
+    border: 2px solid orangered;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.usernameP {
+    margin: 0px;
+    border-bottom: 2px solid lightgray;
+    text-align: center;
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.userAndDelete{
+    display: flex;
+    justify-content: space-between;
 }

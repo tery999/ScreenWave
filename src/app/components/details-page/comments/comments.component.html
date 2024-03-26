@@ -1,19 +1,25 @@
 <div class="commentContainer">
     <div class="addComment">
-        <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()" >
-            <textarea class="textAreaClass" id="comment" [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''" type="text"
-            formControlName="comment" placeholder="Did you like this movie?"> </textarea>
-            <div class="buttonDiv">
-                <button class="commentButton" type="submit" [disabled]="isLoading"> Comment </button>
-            </div>
-        </form>
+        <div class="transParent">
+        </div>
+            <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()">
+                <textarea class="textAreaClass" id="comment"
+                    [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="comment"
+                    placeholder="Did you like this movie?"> </textarea>
+                <div class="buttonDiv">
+                    <button class="commentButton" type="submit" [disabled]="isLoading"> Comment </button>
+                </div>
+            </form>
     </div>
-    <div *ngIf = "movieId">
-        <div *ngIf=" allCurrentComments">
+    <div *ngIf="movieId">
+        <div class="commentsholder" *ngIf="allCurrentComments">
             <div class="commentDiv" *ngFor="let comment of( allCurrentComments | async)">
-                <p *ngIf="comment?.username">{{comment.username}}</p>
+                <div class="userAndDelete">
+                    <p *ngIf="comment?.username" class="usernameP">{{comment.username}}</p>
+                    <button [disabled]="isLoading" (click)="deleteComFunc(comment._id)"
+                        *ngIf="comment.owner === currentUserId"> DELETE </button>
+                </div>
                 <p>{{comment.comment}}</p>
-                <button [disabled]="isLoading" (click)="deleteComFunc(comment._id)" *ngIf="comment.owner === currentUserId"> DELETE </button>
             </div>
         </div>
     </div>
