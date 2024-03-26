@@ -12,7 +12,7 @@
         <div *ngIf=" allCurrentComments">
             <div class="commentDiv" *ngFor="let comment of( allCurrentComments | async)">
                 <p>{{comment.comment}}</p>
-                <button *ngIf="comment.owner === currentUserId"> DELETE </button>
+                <button (click)="deleteComFunc(comment._id)" *ngIf="comment.owner === currentUserId"> DELETE </button>
             </div>
         </div>
     </div>

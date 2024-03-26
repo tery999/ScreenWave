@@ -96,5 +96,21 @@ router.get("/Comments/:id/All", async (req, res) => {
    }
 })
 
+router.put("/Comments/:id/Delete", async (req,res)=> {
+   try {
+      const movieId = req.params.id;
+      const {commentId} = req.body;
+      console.log("COMMENT ID", commentId);
+      console.log("MOVIEID", movieId);
+      const deletedComment = await Movie.findOneAndUpdate( 
+         {_id: movieId},
+         {$pull: { comments: {_id: commentId}}}
+         )
+      res.json({message: "Comment Deleted"});
+   } catch (err) {
+      res.status(400).json(err);
+   }
+})
+
 
 module.exports = router;

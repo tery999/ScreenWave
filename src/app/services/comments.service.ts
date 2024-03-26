@@ -26,4 +26,11 @@ export class CommentsService {
     }
     return this.http.post(URL, body);
   }
+
+  deleteComment(commentId:string, movieId:string) {
+    debugger;
+    let id = movieId;
+    const URL = `http://localhost:3030/Movies/Comments/${id}/Delete`
+    return this.http.put(URL, {commentId:commentId})
+  }
 }
