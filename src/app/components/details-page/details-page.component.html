@@ -11,6 +11,12 @@
                 <fa-icon class="calendarIcon" [icon]="faCalendarDays"></fa-icon>
             </div>
             <p class="genres">{{currentMovie?.genre}}</p>
+            <div *ngIf="currentUserId && currentMovie?.ownerId === currentUserId" class="editDeleteButtons">
+                <button class="buttons delete" (click)="deleteMovieFunction()">Delete</button>
+                <a [routerLink]="['/Edit', currentMovie?._id]">
+                    <button class="buttons edit">Edit</button>
+                </a>
+            </div>
         </div>
         <div class="details">
             <div class="staff">
@@ -25,15 +31,9 @@
             <section *ngIf="seeMore" class="summarySection">
                 <div class="upperBorderSummary"></div>
                 <p> {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button> </p>
+                
             </section>
         </div>
-    </div>
-    <div *ngIf="currentUserId && currentMovie?.ownerId === currentUserId" class="editDeleteButtons">
-        <button class="buttons delete" (click)="deleteMovieFunction()">Delete</button>
-        <a [routerLink]="['/Edit', currentMovie?._id]">
-            <button class="buttons edit">Edit</button>
-        </a>
-
     </div>
 </div>
 <div *ngIf="isLoaded" class="noMatchContainer">

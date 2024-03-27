@@ -4,7 +4,7 @@ import { trimValidator } from '../../add-movie-page/AddMovieCustomVal';
 import { CommentsService } from 'src/app/services/comments.service';
 import { Comments } from 'src/app/interfaces/Comments';
 import { ActivatedRoute } from '@angular/router';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class CommentsComponent implements OnInit {
 
   }
   //using async, because it should automaticly unsubscribe. Hopefully im using it correctly.
-  allCurrentComments: Observable<Comments[]> = this.commentService.getAllComments(this.movieId as string);
+  allCurrentComments: Observable<Comments[]>|undefined|null = this.commentService.getAllComments(this.movieId as string);
+
   addCommentForm = this.fb.group({
     comment: ["", [Validators.required, trimValidator, Validators.maxLength(300)]],
   })
@@ -34,14 +35,12 @@ export class CommentsComponent implements OnInit {
   addCommentFunc() {
     this.isSubmitted = true;
     console.log(this.addCommentForm.getRawValue());
+    console.log("ALL CURRENT COMMENTS", this.allCurrentComments);
     if (this.addCommentForm.valid) {
       this.isLoading = true;
       let comment = this.addCommentForm.get("comment")?.value as unknown as string;
       let ownerId = this.currentUserId as string;
       let movieId = this.movieId as string;
-      console.log("GIVEN INFORMATION IS commebt", comment);
-      console.log("GIVEN INFORMATION IS ownerId", ownerId);
-      console.log("GIVEN INFORMATION IS movieId", movieId);
       this.commentService.addComment(comment, movieId, ownerId).subscribe();
       // Its stupid to call all comments, whenever I add a new comment,
       // but this is the only solution I have right now

@@ -95,6 +95,9 @@ router.get("/Comments/:id/All", async (req, res) => {
       const allMovieComments = await Movie.find( {_id:movieId}, {comments:1})
       const currentComments = allMovieComments[0].comments;
       console.log("CURRENT MOVIE COMMENTS:", currentComments)
+      if (currentComments.length===0) {
+         return res.status(400).json({message:"No comments"});
+      }
       res.json(currentComments);
    } catch (err) {
       res.status(400).json(err);
