@@ -107,7 +107,20 @@
 }
 
 .button {
+    cursor: pointer;
     margin-top: 10px;
+    font-size: 18px;
     width: 200px;
-    height: 30px;
+    height: 40px;
+    color: white;
+    background-color: #C850C0;
+    border: 3px solid rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.button:hover {
+    border: 3px solid rebeccapurple;
+    background-color: rgb(235, 49, 222);
+    transition: 0.5s;
 }
