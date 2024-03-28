@@ -11,6 +11,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './Auth.guard';
 import { LoggedGuard } from './Logged.guard';
+import { MyMoviesComponent } from './components/profile/my-movies/my-movies.component';
 
 const routes: Routes = [
   { path: "AddMovie" , component:AddMoviePageComponent, canActivate: [AuthGuard]},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: "Edit/:id", component:EditMoviePageComponent, canActivate: [AuthGuard]},
   {path: "Register" , component: RegisterComponent, canActivate:[LoggedGuard]},
   {path: "Login", component: LoginComponent, canActivate:[LoggedGuard]},
-  {path: "Profile", component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: "Profile", component: ProfileComponent, canActivate: [AuthGuard]} ,
+  {path: "Profile/MyMovies", component: MyMoviesComponent, canActivate: [AuthGuard]} ,
   {path: "**", component: NotFoundComponent} 
 ];
 

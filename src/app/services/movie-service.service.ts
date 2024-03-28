@@ -28,6 +28,11 @@ export class MovieServiceService {
     return this.http.get<Movies>( urlMovieId);
   }
 
+  getOwnedMovies( ownerId: string) {
+    const URL = this.baseURL+`/Owned/${ownerId}`
+    return this.http.get<Movies[]>(URL);
+  }
+
   editMovie ( movie:Movies, _id:string) {
     const urlMovieId = this.baseURL+`/Edit/${_id}`
     console.log(" THE URL IS" , urlMovieId);

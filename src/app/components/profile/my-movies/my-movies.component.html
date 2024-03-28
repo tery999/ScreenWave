@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="border">
+        <div class="titleDiv">
+            <h1>My Movies</h1>
+            <div class="bottomBorder"></div>
+        </div>
+        <div class="movieList" *ngFor="let movie of myMovies">
+            <img class="image" src={{movie.picture}} alt="">
+            <p>{{movie.name}}</p>
+        </div>
+    </div>
+</div>

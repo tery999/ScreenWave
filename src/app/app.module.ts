@@ -20,6 +20,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.interceptor';
 import { CommentsComponent } from './components/details-page/comments/comments.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MyMoviesComponent } from './components/profile/my-movies/my-movies.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     NotFoundComponent,
     CommentsComponent,
     ProfileComponent,
+    MyMoviesComponent,
   ],
   imports: [
     BrowserModule,

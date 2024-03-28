@@ -37,6 +37,18 @@ router.get("/:id", async (req, res) => {
 
 })
 
+router.get("/owned/:ownerId", async (req, res) => {
+   try {
+      const ownerId = req.params.ownerId;
+      const ownerMovies = await Movie.find( {ownerId: ownerId})
+      console.log("OWNED MOVIES", ownerMovies, "OWNED MOVIES");
+      res.json(ownerMovies);
+   } catch (err) {
+      res.status(400).json(err);
+   }
+
+})
+
 router.post("/Add", async (req, res) => {
    const movieInfo = req.body;
    await Movie.create(movieInfo);
