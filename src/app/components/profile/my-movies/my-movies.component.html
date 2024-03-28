@@ -4,9 +4,15 @@
             <h1>My Movies</h1>
             <div class="bottomBorder"></div>
         </div>
-        <div class="movieList" *ngFor="let movie of myMovies">
-            <img class="image" src={{movie.picture}} alt="">
-            <p>{{movie.name}}</p>
+        <div *ngIf="myMovies.length !== 0" class="movieListContainer">
+            <div class="movieList" *ngFor="let movie of myMovies">
+                <img class="image" src={{movie.picture}} alt="">
+                <p class="title">{{movie.name}}</p>
+                <a [routerLink]="['/Movies', movie._id ]">
+                    <button class="button"> Go to</button>
+                </a>
+            </div>
         </div>
+        <p *ngIf="myMovies.length === 0">You havent added any movies</p>
     </div>
 </div>

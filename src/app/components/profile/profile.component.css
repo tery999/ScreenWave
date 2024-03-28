@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Changa&display=swap');
 
 .profileContainer {
     display: flex;
@@ -16,7 +17,7 @@
 
 .titleDiv h1 {
     color: white;
-    margin-bottom: 5px;
+    margin-bottom: 8px !important;
 }
 
 .bottomBorder {
