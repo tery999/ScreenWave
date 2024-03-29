@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { AuthGuard } from './Auth.guard';
 import { LoggedGuard } from './Logged.guard';
 import { MyMoviesComponent } from './components/profile/my-movies/my-movies.component';
+import { MyWatchListComponent } from './components/profile/my-watch-list/my-watch-list.component';
 
 const routes: Routes = [
   { path: "AddMovie" , component:AddMoviePageComponent, canActivate: [AuthGuard]},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: "Login", component: LoginComponent, canActivate:[LoggedGuard]},
   {path: "Profile", component: ProfileComponent, canActivate: [AuthGuard]} ,
   {path: "Profile/MyMovies", component: MyMoviesComponent, canActivate: [AuthGuard]} ,
+  {path: "Profile/MyWatchList", component: MyWatchListComponent, canActivate: [AuthGuard]} ,
   {path: "**", component: NotFoundComponent} 
 ];
 

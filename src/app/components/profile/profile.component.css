@@ -38,6 +38,14 @@
     width: 300px;
 }
 
+.myWatchDiv {
+    cursor: pointer;
+    position: relative;
+    border: 4px solid palevioletred;
+    height: 400px;
+    width: 300px;
+}
+
 .myMoviesDiv:hover .OverlayDiv{
    opacity: 1;
 }
@@ -46,6 +54,15 @@
     width: 50%;
     transition: 0.5s;
  }
+
+ .myWatchDiv:hover .OverlayDiv{
+    opacity: 1;
+ }
+ 
+ .myWatchDiv:hover .bottomBorderOverlay{
+     width: 50%;
+     transition: 0.5s;
+  }
 
 .image {
     height: 100%;
@@ -80,4 +97,9 @@
     border-radius: 10px;
     margin-bottom: 20px;
     transition: 0.5s;
+}
+
+.imageRoutesContainer {
+    display: flex;
+    gap: 30px;
 }

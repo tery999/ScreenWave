@@ -21,6 +21,8 @@ import { TokenInterceptorInterceptor } from './interceptors/token-interceptor.in
 import { CommentsComponent } from './components/details-page/comments/comments.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { MyMoviesComponent } from './components/profile/my-movies/my-movies.component';
+import { MyWatchListComponent } from './components/profile/my-watch-list/my-watch-list.component';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,7 @@ import { MyMoviesComponent } from './components/profile/my-movies/my-movies.comp
     CommentsComponent,
     ProfileComponent,
     MyMoviesComponent,
+    MyWatchListComponent,
   ],
   imports: [
     BrowserModule,
