@@ -81,6 +81,31 @@ router.delete("/Delete/:id", async (req, res) => {
    }
 })
 
+router.put("/Watched/:id" , async (req,res) => {
+   try {
+      const movieId = req.params.id
+      const {currentUserId} = req.body;
+      console.log("MOVIE ID IS", movieId);
+      console.log("CURREND USER ID IS", currentUserId);
+      findIfWatched = await Movie.findById(movieId);
+      if( findIfWatched.watchedCounter.includes(currentUserId)) {
+         const returnedMovie = await Movie.findByIdAndUpdate(movieId, {
+            $pull: { "watchedCounter": currentUserId } ,
+         } , { new: true})
+         console.log("RETURNED MOVIE ID , REMOVED",returnedMovie.watchedCounter )
+         res.json( {hasWatched: false});
+      } else {
+         const returnedMovie = await Movie.findByIdAndUpdate(movieId, {
+            "$push": { "watchedCounter": currentUserId } ,
+         } , { new: true})
+         console.log("RETURNED MOVIE ID , ADDED",returnedMovie.watchedCounter )
+         res.json(  {hasWatched: true});
+      }
+   } catch (err) {
+      res.status(400).json(err);
+   }
+})
+
 //Comments Section
 
 router.post("/Comments/:id/Add", async (req, res) => {

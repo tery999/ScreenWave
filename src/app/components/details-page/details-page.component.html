@@ -5,7 +5,11 @@
     </div>
     <div class="informationContainer">
         <div class="ImageDiv">
-            <img class="movieImage" src={{currentMovie?.picture}} alt="">
+            <div class="movieImageDiv">
+                <img class="movieImage" src={{currentMovie?.picture}} alt="">
+                <button *ngIf="hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Remove">Remove Watch</button>
+                <button *ngIf="!hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Add">Add watch</button>
+            </div>
             <div class="yearAndIconDiv">
                 <p> {{currentMovie?.year}}</p>
                 <fa-icon class="calendarIcon" [icon]="faCalendarDays"></fa-icon>

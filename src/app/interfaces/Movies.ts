@@ -10,4 +10,5 @@ export interface Movies {
     director: string,
     ownerId?: string,
     comments?: string[],
+    watchedCounter?: string[]
 }

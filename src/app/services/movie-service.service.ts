@@ -48,4 +48,11 @@ export class MovieServiceService {
     const randomURL = this.baseURL+`/Random`;
     return this.http.get<Movies>(randomURL);
   }
+
+  addToWatched(currentMovieId:string, currentUserId:string) {
+    console.log("CURRENT MOVIE ID", currentMovieId)
+    console.log("CURRENT USER ID", currentUserId)
+     const watchedURL =this.baseURL+`/Watched/${currentMovieId}`
+     return this.http.put(watchedURL, {currentUserId})
+  }
 }

@@ -18,7 +18,8 @@ const moviesSchema = new mongoose.Schema({
   actors: String,
   director: String,
   ownerId: { type: mongoose.Schema.Types.ObjectId, ref: User },
-  comments: [commentSchema]
+  comments: [commentSchema],
+  watchedCounter: [{ type: mongoose.Schema.Types.ObjectId, ref: User }],
 
 }, 
 { timestamps: true });

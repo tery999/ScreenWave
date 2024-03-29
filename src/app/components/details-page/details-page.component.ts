@@ -22,6 +22,7 @@ export class DetailsPageComponent implements OnInit{
   summary:string = "";
   currentUserId:string|null = "";
   seeMore:boolean = false;
+  hasWatched:boolean = false;
 
   constructor(private route:ActivatedRoute , 
     private movieService:MovieServiceService , 
@@ -42,17 +43,29 @@ export class DetailsPageComponent implements OnInit{
     this.router.navigateByUrl("/Catalog")
   }
 
+  addToWatchFunc() {
+    const currentMovieId:string = this.movieId;
+    const currentUserId:string = this.currentUserId as string;
+    this.movieService.addToWatched(currentMovieId, currentUserId).subscribe();
+    this.hasWatched = !this.hasWatched;
+  }
+
   ngOnInit(): void {
-    debugger;
+    this.currentUserId = this.userService.getUserId;
     const currentId = this.route.snapshot.params["id"];
     this.movieService.getOneMovie(currentId).subscribe ( (movie) => {
       this.currentMovie = movie;
       this.summary = this.currentMovie.summary as string
       this.movieId = this.currentMovie._id as string
+      if (movie.watchedCounter?.includes(this.currentUserId as string)) {
+        this.hasWatched = true
+      } else {
+        this.hasWatched = false
+      }
+      
     },(error) => {
       this.isLoaded = true;
     }
     )
-    this.currentUserId = this.userService.getUserId;
   }
 }
