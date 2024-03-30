@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 import { Movies } from '../interfaces/Movies';
 import { HttpClient } from '@angular/common/http';
 import { json, text } from 'express';
@@ -31,6 +31,13 @@ export class MovieServiceService {
   getOwnedMovies( ownerId: string) {
     const URL = this.baseURL+`/Owned/${ownerId}`
     return this.http.get<Movies[]>(URL);
+  }
+
+  getWatchList( userId:string) {
+    // try with pipe filtration, instead of doing it on the BE
+    return this.http.get<Movies[]>(this.baseURL).pipe(
+      map(movies => movies.filter( movie => movie.watchedCounter?.includes(userId)))
+    );
   }
 
   editMovie ( movie:Movies, _id:string) {

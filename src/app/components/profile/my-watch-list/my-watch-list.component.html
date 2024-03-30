@@ -1,1 +1,16 @@
-<p>my-watch-list works!</p>
+<div class="WatchContainer">
+    <div class="border">
+        <div class="titleDiv">
+            <h1>My Watchlist</h1>
+            <div class="bottomBorder"></div>
+        </div>
+        <div *ngIf="watchList.length !== 0" class="watchListContainer">
+            <div *ngFor="let movie of watchList" class="watchListings">
+                <p>{{movie.name}}</p>
+                <p *ngIf="movie.name.length >= 20">{{movie.name|slice:0:20}}...</p>
+                <button></button>
+                <button (click)="detailPageFuncClick( movie?._id)" class="infoButton">  <fa-icon class="faInfoCircle" [icon]="faInfoCircle"></fa-icon></button>
+            </div>
+        </div>
+    </div>
+</div>
