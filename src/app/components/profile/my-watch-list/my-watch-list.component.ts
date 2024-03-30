@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { faInfoCircle } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faSquareMinus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,10 +17,21 @@ export class MyWatchListComponent implements OnInit {
  watchList:Movies[] = [];
  userId:string = "";
  faInfoCircle = faInfoCircle;
+ faSquareMinus = faSquareMinus;
 
  detailPageFuncClick(id:string|undefined) {
-  let movieId = id as unknown as string
+  let movieId = id as unknown as string;
   this.router.navigateByUrl(`Movies/${movieId}`);
+ }
+
+ deleteWatchedFunc(id:string|undefined) {
+  let currentMovieId = id as unknown as string;
+  let currentUserId = this.userId;
+  this.movieService.addToWatched(currentMovieId, currentUserId ).subscribe();
+  let filtered = this.watchList.filter( (movie) => {
+    return movie._id !== currentMovieId;
+  })
+  this.watchList = filtered;
  }
 
  ngOnInit(): void {

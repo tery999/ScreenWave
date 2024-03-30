@@ -53,19 +53,22 @@
 .watchListContainer{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
 }
 
 .watchListings {
+    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-sizing: border-box;
     background-color: #c6bcf2;
     width: 450px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     border-radius: 20px;
-    padding-left: 5px;
+    padding-left: 10px;
     padding-right: 5px;
     color: black;
     font-weight: bold;
@@ -74,28 +77,56 @@
 
 .watchListings:hover {
     box-shadow: 2px 2px 4px 0px rgba(102,48,115,0.8);
+    background-color: rgb(188, 176, 238);
     transition: 0.3s;
 }
 
 .faInfoCircle {
     font-size: 33px;
     position: relative;
-    right: 2px;
+    color: darkblue;
+    right: 0px;
     top: 1px;
 }
 
 .infoButton {
     cursor: pointer;
+    padding: 0;
     position: relative;
     border: none;
     background-color: #ffffff;
-    width: 40px;
-    height: 40px;
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     transition: 0.4s;
 }
 
 .infoButton:hover .faInfoCircle {
-    color: rgb(98, 128, 218);
+    color: rgb(79, 123, 255);
     transition: 0.4s;
+}
+
+.deleteButton {
+    cursor: pointer;
+    padding: 0;
+    position: relative;
+    border: none;
+    background-color: #ffffff;
+    width: 35px;
+    height: 35px;
+    border-radius: 4px;
+    transition: 0.4s;
+}
+
+.deleteButton:hover .faSquareMinus {
+    color: red;
+    transition: 0.4s;
+}
+
+.faSquareMinus {
+    font-size: 33px;
+    position: relative;
+    color: darkred;
+    right: 0px;
+    top: 0px;
 }

@@ -8,8 +8,8 @@
             <div *ngFor="let movie of watchList" class="watchListings">
                 <p>{{movie.name}}</p>
                 <p *ngIf="movie.name.length >= 20">{{movie.name|slice:0:20}}...</p>
-                <button></button>
-                <button (click)="detailPageFuncClick( movie?._id)" class="infoButton">  <fa-icon class="faInfoCircle" [icon]="faInfoCircle"></fa-icon></button>
+                <button (click)="deleteWatchedFunc( movie?._id)" class="deleteButton" ><fa-icon class="faSquareMinus" [icon]="faSquareMinus"></fa-icon> </button>
+                <button (click)="detailPageFuncClick( movie?._id)" class="infoButton"><fa-icon class="faInfoCircle" [icon]="faInfoCircle"></fa-icon></button>
             </div>
         </div>
     </div>
