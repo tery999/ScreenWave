@@ -1,15 +1,14 @@
 <div class="commentContainer">
-    <div class="addComment">
+    <div *ngIf="currentUserId" class="addComment">
         <div class="transParent">
         </div>
-            <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()">
-                <textarea class="textAreaClass" id="comment"
-                    [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''" type="text" formControlName="comment"
-                    placeholder="Did you like this movie?"> </textarea>
-                <div class="buttonDiv">
-                    <button class="commentButton" type="submit" [disabled]="isLoading"> Comment </button>
-                </div>
-            </form>
+        <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()">
+            <textarea class="textAreaClass" id="comment" [ngClass]="comment?.invalid && isSubmitted ? 'errorArea' : ''"
+                type="text" formControlName="comment" placeholder="Did you like this movie?"> </textarea>
+            <div class="buttonDiv">
+                <button class="commentButton" type="submit" [disabled]="isLoading"> Comment </button>
+            </div>
+        </form>
     </div>
     <div *ngIf="movieId">
         <div class="commentsholder" *ngIf="( allCurrentComments | async)">
