@@ -56,17 +56,24 @@
 }
 
 button:disabled {
-    opacity: 0;
+    /* opacity: 0; */
+    background-color: lightgray;
+    cursor: wait;
 }
 
 .commentButton {
+    cursor: pointer;
     width: 140px;
     height: 35px;
     margin-top: 10px;
 }
 
 .commentButton:disabled {
-    background-color: black;
+    cursor: wait;
+    background-color: lightgray;
+    border-color: lightblue;
+    color: white;
+    transition: 0.2s;
 }
 
 .commentsholder {
@@ -108,6 +115,7 @@ button:disabled {
     transition: 0.3s;
 }
 
-.buttonX:hover{
+.buttonX:hover:enabled{
+    cursor: pointer;
     background-color: red;
 }
