@@ -173,8 +173,39 @@ h1 {
     position: relative;
 }
 
+.WatchButtonsDiv {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .WatchButton {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    cursor: pointer;
+    font-size: 16px;
+    height: 35px;
+    width: 210px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    border: none;
+    background-color: orange;
+    transition: 0.3s;
+}
+
+.WatchButton:hover {
+    border-radius: 20px;
+    transition: 0.3s;
+    background-color: rgb(255, 181, 45);
+}
+
+.Remove:hover{
+    border-radius: 20px;
+    transition: 0.3s;
+    background-color: rgb(255, 140, 0);
+}
+
+.faEye {
+    font-size: 20px;
+    color: white;
 }

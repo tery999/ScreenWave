@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
-import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays, faEye , faEyeSlash} from '@fortawesome/free-solid-svg-icons';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
@@ -14,6 +14,8 @@ import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
 })
 export class DetailsPageComponent implements OnInit{
   faCalendarDays = faCalendarDays;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
   currentMovie: Movies|undefined;
   // need to add check if subscription is done/hasError, otherwise the "MovieDoesntExist" photo is shown in the 
   //beginning for a split second

@@ -7,8 +7,8 @@
         <div class="ImageDiv">
             <div class="movieImageDiv">
                 <img class="movieImage" src={{currentMovie?.picture}} alt="">
-                <button *ngIf="hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Remove">Remove Watch</button>
-                <button *ngIf="!hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Add">Add watch</button>
+                <!-- <button *ngIf="hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Remove"> <fa-icon class="faEye" [icon]="faEye"></fa-icon> Remove</button>
+                <button *ngIf="!hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Add">Add</button> -->
             </div>
             <div class="yearAndIconDiv">
                 <p> {{currentMovie?.year}}</p>
@@ -35,8 +35,14 @@
             <section *ngIf="seeMore" class="summarySection">
                 <div class="upperBorderSummary"></div>
                 <p> {{summary}} <button (click)="seeMoreClickFunction()" class="seeMore">See less</button> </p>
-                
+
             </section>
+            <div class="WatchButtonsDiv">
+                <button *ngIf="hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Remove">
+                     Remove from watched <fa-icon class="faEye" [icon]="faEyeSlash"></fa-icon> </button>
+                <button *ngIf="!hasWatched && currentUserId" (click)="addToWatchFunc()"
+                    class="WatchButton Add">Add to watched <fa-icon class="faEye" [icon]="faEye"></fa-icon> </button>
+            </div>
         </div>
     </div>
 </div>
