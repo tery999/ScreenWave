@@ -18,7 +18,7 @@
                 <div class="userAndDelete">
                     <p *ngIf="comment?.username" class="usernameP">{{comment.username}}</p>
                     <button [disabled]="isLoading" (click)="deleteComFunc(comment._id)"
-                        *ngIf="comment.owner === currentUserId"> DELETE </button>
+                       class="buttonX" *ngIf="comment.owner === currentUserId"> X </button>
                 </div>
                 <p>{{comment.comment}}</p>
             </div>

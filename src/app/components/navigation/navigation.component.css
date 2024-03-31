@@ -1,5 +1,6 @@
 .NavBar {
-    background-color: aqua;
+    background-image: linear-gradient(to top, #ffa200, #ff9e00, #ff9900, #ff9500, #ff9000);
+    /* background-color: rgb(68, 67, 83); */
     display: flex;
     justify-content: space-around;
     height: 100px;
