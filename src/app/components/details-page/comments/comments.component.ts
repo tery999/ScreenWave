@@ -14,6 +14,7 @@ import { UserServiceService } from 'src/app/services/user-service.service';
 })
 export class CommentsComponent implements OnInit {
   @Input() currentUserId!: string | undefined | null;
+  @Input() hasError!: boolean
   // Not working, ngOnInit firing before input completes >:(
   // @Input() movieId!: string;
   movieId = this.route.snapshot.params["id"];

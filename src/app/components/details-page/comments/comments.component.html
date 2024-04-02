@@ -1,5 +1,5 @@
 <div class="commentContainer">
-    <div *ngIf="currentUserId" class="addComment">
+    <div *ngIf="currentUserId && hasError!==true" class="addComment">
         <div class="transParent">
         </div>
         <form class="formClass" [formGroup]="addCommentForm" (ngSubmit)="addCommentFunc()">
@@ -10,7 +10,7 @@
             </div>
         </form>
     </div>
-    <div *ngIf="movieId">
+    <div *ngIf="movieId && hasError!==true">
         <div class="commentsholder" *ngIf="( allCurrentComments | async)">
             <!-- Div showing even if allCurrentComments are empty, dont know how to fix it -->
             <!-- Had to mofidy BE, to throw error response if no comments -->

@@ -137,7 +137,7 @@ router.get("/Comments/:id/All", async (req, res) => {
       }
       res.json(currentComments);
    } catch (err) {
-      res.status(400).json(err);
+      res.json({})
    }
 })
 

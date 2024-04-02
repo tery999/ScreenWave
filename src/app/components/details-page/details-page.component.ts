@@ -25,6 +25,7 @@ export class DetailsPageComponent implements OnInit{
   currentUserId:string|null = "";
   seeMore:boolean = false;
   hasWatched:boolean = false;
+  hasError:boolean = false;
 
   constructor(private route:ActivatedRoute , 
     private movieService:MovieServiceService , 
@@ -56,6 +57,10 @@ export class DetailsPageComponent implements OnInit{
     this.currentUserId = this.userService.getUserId;
     const currentId = this.route.snapshot.params["id"];
     this.movieService.getOneMovie(currentId).subscribe ( (movie) => {
+      if(movie === null) {
+        console.log("THERE WAS ERROR, NO MOVIE NAME")
+        this.hasError = true;
+      }
       this.currentMovie = movie;
       this.summary = this.currentMovie.summary as string
       this.movieId = this.currentMovie._id as string
@@ -66,7 +71,9 @@ export class DetailsPageComponent implements OnInit{
       }
       
     },(error) => {
+      console.log("THERE WAS ERROR")
       this.isLoaded = true;
+      this.hasError = true;
     }
     )
   }

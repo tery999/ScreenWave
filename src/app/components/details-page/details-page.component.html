@@ -46,7 +46,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="isLoaded" class="noMatchContainer">
+<div *ngIf="isLoaded || !currentMovie" class="noMatchContainer">
     <div class="noMatch" *ngIf="!currentMovie?.name">
         <p class="notExistPar">Movie Doesn't Exist :(</p>
         <a routerLink="/Catalog">
@@ -55,4 +55,4 @@
     </div>
 </div>
 
-<app-comments [currentUserId]="currentUserId"></app-comments>
+<app-comments [currentUserId]="currentUserId" [hasError]="hasError"></app-comments>
