@@ -4,7 +4,7 @@
         <div class="bottomBorder"></div>
         <div class="ImageHolder">
             <a [routerLink]="['/Movies', movie._id ]">
-                <img class="image" src={{movie.picture}} alt="">
+                <img class="image" src={{movie.picture}} alt="" appImageErrorDirective>
             </a>
         </div>
     </div>

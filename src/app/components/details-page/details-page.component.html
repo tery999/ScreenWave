@@ -1,4 +1,4 @@
-<div *ngIf="currentMovie?.name" class="container">
+<div *ngIf="currentMovie?.name" class="container" >
     <div class="titleDiv">
         <h1>{{currentMovie?.name}}</h1>
         <div class="bottomBorder"></div>
@@ -6,7 +6,7 @@
     <div class="informationContainer">
         <div class="ImageDiv">
             <div class="movieImageDiv">
-                <img class="movieImage" src={{currentMovie?.picture}} alt="">
+                <img class="movieImage" src={{currentMovie?.picture}} alt="" appImageErrorDirective>
                 <!-- <button *ngIf="hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Remove"> <fa-icon class="faEye" [icon]="faEye"></fa-icon> Remove</button>
                 <button *ngIf="!hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Add">Add</button> -->
             </div>

@@ -6,7 +6,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-catalog',
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.css']
+  styleUrls: ['./catalog.component.css'],
 })
 export class CatalogComponent implements OnInit {
   faMagnifyingGlass = faMagnifyingGlass;

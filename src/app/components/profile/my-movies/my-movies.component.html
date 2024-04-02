@@ -6,7 +6,7 @@
         </div>
         <div *ngIf="myMovies.length !== 0" class="movieListContainer">
             <div class="movieList" *ngFor="let movie of myMovies">
-                <img class="image" src={{movie.picture}} alt="">
+                <img class="image" src={{movie.picture}} alt="" appImageErrorDirective>
                 <p class="title">{{movie.name}}</p>
                 <a [routerLink]="['/Movies', movie._id ]">
                     <button class="button"> Go to</button>
