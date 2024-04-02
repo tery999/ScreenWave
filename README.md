@@ -53,8 +53,11 @@ If it catches a 401 error - Unauthorized, the user will be logged out and redire
 
 ## Technologies used
 Angular & Typescript,
+
 HTML&CSS,
+
 Node/Express Js,
+
 MongoDb/Mongoose
 
 
