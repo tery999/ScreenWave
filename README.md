@@ -51,6 +51,29 @@ Register and Login will redirect logged-in users to the Catalog page.
 TokenInterceptor - used to put token in headers, if it exists.
 If it catches a 401 error - Unauthorized, the user will be logged out and redirected to the Login page. JWT token's time limit is 1 hour.
 
+## BE API
+
+http://localhost:3030/Movies - GET - returns all movies.
+http://localhost:3030/Movies/Random - GET - returns a random movie.
+http://localhost:3030/Movies/:id - GET - returns the movies with this ID.
+http://localhost:3030/Movies/owned/:ownerId" - GET - returns the movies, with the provided ownerId.
+http://localhost:3030/Movies/Add - POST - adds the movie to the Database. Returns "Movie Added" message.
+http://localhost:3030/Movies/Edit/:id - PUT - updates the movie with this ID. Returns the movie with the updated information.
+http://localhost:3030/Movies/Delete/:id - DELETE - removes the movie with this ID. Returns message which informs that the movie has been deleted.
+http://localhost:3030/Movies/Watched/:id - PUT - checks if the current UserId is present in the "WatchedCounter" array.
+If the user exists, they will be pulled from the array. If they dont exist, they will pushed into the array. 
+Returns hasWatched: true/false, depending if the user was added or removed.
+http://localhost:3030/Movies/Comments/:id/Add - POST - pushes the comment into the current movie's "comments" array.
+Returns the updated movie with the new comments.
+http://localhost:3030/Movies/Comments/:id/All - GET - retrieves all the comments from the current movie.
+http://localhost:3030/Movies/Comments/:id/Delete - DELETE - remove the current comment, from the movie's "comments" array.
+Returns {message: "Comment Deleted"}.
+http://localhost:3030/Users/Register - POST - if succesfull , stores the user information and returns a message,
+informing the registration was succesfull. If not succesfull, returns an error message.
+http://localhost:3030/Users/login - POST - If not succesfull, returns an error message. If succesfull, returns token, userId and Username.
+
+
+
 ## Technologies used
 Angular & Typescript,
 
