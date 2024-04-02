@@ -109,3 +109,38 @@
     font-size: 23px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.noMovies {
+    cursor: pointer;
+    position: relative;
+    background-color: #f196f6;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: none;
+    border-radius: 25px;
+    height: 38px;
+    padding-left: 15px;
+    padding-right: 45px;
+    transition: 0.3s;
+    margin-bottom: 15px;
+
+}
+
+.noMovies:hover {
+    background-color: #ef7ff5;
+    transition: 0.3s;
+}
+
+.noMovies:hover .faPlus {
+    color: rgb(102, 43, 122);
+    transition: 0.3s;
+}
+
+.faPlus {
+    position: absolute;
+    color: rgba(255, 255, 255, 0);
+    right: 8px;
+    bottom: 0px;
+    font-size: 30px;
+    transition: 0.3s;
+}

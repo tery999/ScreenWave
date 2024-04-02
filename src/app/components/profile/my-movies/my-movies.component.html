@@ -13,6 +13,8 @@
                 </a>
             </div>
         </div>
-        <p *ngIf="myMovies.length === 0">You havent added any movies</p>
+        <div *ngIf="myMovies.length === 0">
+            <button (click)="addRedirectFunc()" class="noMovies"> Add a movie <fa-icon class="faPlus" [icon]="faPlus"></fa-icon> </button>
+        </div>
     </div>
 </div>

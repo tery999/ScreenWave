@@ -14,5 +14,8 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="watchList.length === 0">
+            <button (click)="catalogRedirectFunc()" class="noMovies"> Add movies to your collection <fa-icon class="faPlus" [icon]="faPlus"></fa-icon> </button>
+        </div>
     </div>
 </div>

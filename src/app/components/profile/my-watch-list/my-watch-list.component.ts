@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movies } from 'src/app/interfaces/Movies';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
 import { UserServiceService } from 'src/app/services/user-service.service';
-import { faInfoCircle, faSquareMinus } from '@fortawesome/free-solid-svg-icons';
+import { faInfoCircle, faSquareMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,6 +18,7 @@ export class MyWatchListComponent implements OnInit {
  userId:string = "";
  faInfoCircle = faInfoCircle;
  faSquareMinus = faSquareMinus;
+ faPlus = faPlus;
 
  detailPageFuncClick(id:string|undefined) {
   let movieId = id as unknown as string;
@@ -32,6 +33,11 @@ export class MyWatchListComponent implements OnInit {
     return movie._id !== currentMovieId;
   })
   this.watchList = filtered;
+ }
+
+ catalogRedirectFunc() {
+  console.log("clocked")
+  this.router.navigateByUrl(`Catalog`);
  }
 
  ngOnInit(): void {

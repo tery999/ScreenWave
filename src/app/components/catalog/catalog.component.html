@@ -10,4 +10,5 @@
 
 <div class="MovieContainer">
     <app-movie-list-component *ngFor="let movie of currentMovies" [movie]="movie"></app-movie-list-component>
+    <p class="noMovieP" *ngIf="currentMovies.length===0"> No movies found </p>
 </div>
