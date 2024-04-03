@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { Users } from 'src/app/interfaces/Users';
 import { BehaviorSubject } from 'rxjs';
-import { json } from 'express';
+import { faUser, faLock} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +16,8 @@ export class LoginComponent {
   constructor(private fb: FormBuilder, private router: Router, private userService: UserServiceService) {
 
   }
+  faUser = faUser;
+  faLock = faLock;
 
   loginForm = this.fb.group({
     name: ["", [Validators.required, trimValidator, Validators.maxLength(20)]],

@@ -61,6 +61,7 @@ export class DetailsPageComponent implements OnInit{
         console.log("THERE WAS ERROR, NO MOVIE NAME")
         this.hasError = true;
       }
+      this.isLoaded = true;
       this.currentMovie = movie;
       this.summary = this.currentMovie.summary as string
       this.movieId = this.currentMovie._id as string

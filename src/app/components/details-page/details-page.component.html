@@ -44,7 +44,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="isLoaded || !currentMovie || hasError" class="noMatchContainer">
+<div *ngIf="isLoaded && hasError" class="noMatchContainer">
     <div class="noMatch" *ngIf="!currentMovie?.name">
         <p class="notExistPar">Movie Doesn't Exist :(</p>
         <a routerLink="/Catalog">

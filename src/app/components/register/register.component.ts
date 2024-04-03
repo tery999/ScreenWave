@@ -5,6 +5,7 @@ import { trimValidator } from '../add-movie-page/AddMovieCustomVal';
 import { comparePasswords } from './ValidatorComparePass';
 import { Users } from 'src/app/interfaces/Users';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import { faUser, faLock, faUnlockKeyhole} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,10 @@ export class RegisterComponent {
   constructor( private fb: FormBuilder, private router: Router, private userService: UserServiceService){
 
   }
+
+  faUser = faUser;
+  faLock = faLock;
+  faUnlockKeyhole = faUnlockKeyhole;
 
   registerForm = this.fb.group ( {
     name: ["", [Validators.required, trimValidator, Validators.maxLength(20)]],
