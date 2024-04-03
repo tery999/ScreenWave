@@ -23,12 +23,13 @@ export class EditMoviePageComponent implements OnInit {
     picture: ["", [Validators.required, trimValidator]],
     genre:["", [Validators.required, trimValidator,Validators.maxLength(30)]],
     year: [0, [Validators.required, Validators.minLength(4), Validators.maxLength(4), minusValidator]],
-    summary:["", Validators.required],
+    summary:["", [Validators.required, Validators.maxLength(8000)]],
     actors: "",
     director: ""
    })
   
    isSubmitted:boolean = false;
+   validSend:boolean = false;
     MovieId: string = ""
     userId:string = this.userService.getUserId;
   
@@ -66,9 +67,12 @@ export class EditMoviePageComponent implements OnInit {
     this.isSubmitted = true;
     console.log(this.editMovieForm.getRawValue());
     if ( this.editMovieForm.valid ) {
+      this.validSend = true;
       const body:Movies = this.editMovieForm.value as unknown as Movies;
       this.movieService.editMovie(body, this.MovieId).subscribe( (info)=> console.log("SUCCESS", info));
-      this.router.navigateByUrl(`/Movies/${this.MovieId}`);
+      setTimeout(() => {
+        this.router.navigateByUrl(`/Movies/${this.MovieId}`);
+      }, 500);
     }
    }
 

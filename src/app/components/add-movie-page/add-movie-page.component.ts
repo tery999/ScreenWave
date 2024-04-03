@@ -24,12 +24,13 @@ export class AddMoviePageComponent {
   picture: ["", [Validators.required, trimValidator]],
   genre:["", [Validators.required, trimValidator,Validators.maxLength(30)]],
   year: ["", [Validators.required, minusValidator, Validators.minLength(4), Validators.maxLength(4)]],
-  summary:["", Validators.required],
+  summary:["", [Validators.required, Validators.maxLength(8000)]],
   actors: "",
   director: ""
  })
 
  isSubmitted:boolean = false;
+ validSend:boolean = false;
 
  //for ease of use, not to type to full name in the template
  get name(){
@@ -58,9 +59,12 @@ export class AddMoviePageComponent {
   this.isSubmitted = true;
   console.log(this.addMovieForm.getRawValue());
   if ( this.addMovieForm.valid ) {
+    this.validSend = true;
     const body:Movies = {...this.addMovieForm.value as unknown as Movies , ownerId: this.userId};
     this.movieService.addMovie(body).subscribe( (info)=> console.log("SUCCESS", info));
-    this.router.navigateByUrl("/Catalog");
+    setTimeout(() => {
+      this.router.navigateByUrl("/Catalog");
+    }, 500);
   }
  }
 

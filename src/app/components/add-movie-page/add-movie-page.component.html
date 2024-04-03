@@ -52,11 +52,12 @@
                     <label>Summary</label>
                     <textarea [ngClass]="summary?.invalid && isSubmitted ? 'errorArea' : ''" name="summary" id="summary"
                         formControlName="summary"></textarea>
-                    <p class="errorMessage" *ngIf="summary?.invalid && isSubmitted"> Please add some description </p>
+                    <p class="errorMessage" *ngIf="summary?.hasError('required') && isSubmitted"> Please add some description </p>
+                    <p class="errorMessage" *ngIf="summary?.hasError('maxlength') && isSubmitted"> Description too long</p>
                 </div>
             </div>
             <div class="buttonDiv">
-                <button class="button" type="submit"> Add </button>
+                <button [disabled]="validSend" class="button" type="submit"> Add </button>
             </div>
         </form>
     </div>

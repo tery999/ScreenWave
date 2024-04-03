@@ -26,6 +26,7 @@ export class DetailsPageComponent implements OnInit{
   seeMore:boolean = false;
   hasWatched:boolean = false;
   hasError:boolean = false;
+  deleteClicked:boolean = false;
 
   constructor(private route:ActivatedRoute , 
     private movieService:MovieServiceService , 
@@ -43,7 +44,10 @@ export class DetailsPageComponent implements OnInit{
   deleteMovieFunction() {
     const deleteId = this.currentMovie?._id as string;
     this.movieService.deleteMovie(deleteId).subscribe();
-    this.router.navigateByUrl("/Catalog")
+    this.deleteClicked = true
+    setTimeout(() => {
+      this.router.navigateByUrl("/Catalog")
+    }, 500);
   }
 
   addToWatchFunc() {

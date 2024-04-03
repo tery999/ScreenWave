@@ -7,6 +7,7 @@
                 type="text" formControlName="comment" placeholder="Did you like this movie?"> </textarea>
             <div class="buttonDiv">
                 <button class="commentButton" type="submit" [disabled]="isLoading"> Comment </button>
+                <p *ngIf="isSubmitted && comment?.hasError('maxlength')" class="ErrorMessage">Cant exceed 600 characters</p>
             </div>
         </form>
     </div>

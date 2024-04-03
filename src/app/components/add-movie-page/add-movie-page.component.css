@@ -119,8 +119,13 @@
     transition: 0.5s;
 }
 
-.button:hover {
+.button:hover:enabled {
     border: 3px solid rebeccapurple;
     background-color: rgb(235, 49, 222);
     transition: 0.5s;
+}
+
+button:disabled {
+    cursor: wait;
+    background-color: gainsboro;
 }

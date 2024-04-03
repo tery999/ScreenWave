@@ -14,9 +14,9 @@
             </div>
             <p class="genres">{{currentMovie?.genre}}</p>
             <div *ngIf="currentUserId && currentMovie?.ownerId === currentUserId" class="editDeleteButtons">
-                <button class="buttons delete" (click)="deleteMovieFunction()">Delete</button>
+                <button [disabled]="deleteClicked" class="buttons delete" (click)="deleteMovieFunction()">Delete</button>
                 <a [routerLink]="['/Edit', currentMovie?._id]">
-                    <button class="buttons edit">Edit</button>
+                    <button [disabled]="deleteClicked" class="buttons edit">Edit</button>
                 </a>
             </div>
         </div>

@@ -18,6 +18,13 @@
     align-items: center;
 }
 
+.buttonDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .formClass textarea, .buttonDiv{
     z-index: 2;
 }
@@ -119,4 +126,12 @@ button:disabled {
 .buttonX:hover:enabled{
     cursor: pointer;
     background-color: red;
+}
+
+.ErrorMessage {
+    color: yellow;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }

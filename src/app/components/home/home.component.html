@@ -9,7 +9,7 @@
     <div class="borderDiv">
         <a [routerLink]="['/Movies', randomMovie?._id ]">
             <div class="imageDiv">
-                <img class="homeImg" src={{randomMovie?.picture}} alt="">
+                <img class="homeImg" src={{randomMovie?.picture}} alt="" appImageErrorDirective>
                 <div class="overlayDiv">
                     <p class="check">Check our movies</p>
                     <div class="bottomBorder"></div>

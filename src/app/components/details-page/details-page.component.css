@@ -140,7 +140,7 @@ h1 {
     transition: 0.3s;
 }
 
-.buttons:hover {
+.buttons:hover:enabled {
     background-color: blueviolet;
 }
 
@@ -208,4 +208,9 @@ h1 {
 .faEye {
     font-size: 20px;
     color: white;
+}
+
+button:disabled {
+    cursor: wait;
+    background-color: gainsboro;
 }

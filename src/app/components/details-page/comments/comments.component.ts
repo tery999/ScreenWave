@@ -25,7 +25,7 @@ export class CommentsComponent implements OnInit {
   allCurrentComments: Observable<Comments[]>|undefined|null = this.commentService.getAllComments(this.movieId as string);
 
   addCommentForm = this.fb.group({
-    comment: ["", [Validators.required, trimValidator, Validators.maxLength(400)]],
+    comment: ["", [Validators.required, trimValidator, Validators.maxLength(600)]],
   })
   isSubmitted: boolean = false;
   isLoading: boolean = false;
