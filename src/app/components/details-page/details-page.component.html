@@ -7,8 +7,6 @@
         <div class="ImageDiv">
             <div class="movieImageDiv">
                 <img class="movieImage" src={{currentMovie?.picture}} alt="" appImageErrorDirective>
-                <!-- <button *ngIf="hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Remove"> <fa-icon class="faEye" [icon]="faEye"></fa-icon> Remove</button>
-                <button *ngIf="!hasWatched && currentUserId" (click)="addToWatchFunc()" class="WatchButton Add">Add</button> -->
             </div>
             <div class="yearAndIconDiv">
                 <p> {{currentMovie?.year}}</p>
@@ -46,7 +44,7 @@
         </div>
     </div>
 </div>
-<div *ngIf="isLoaded || !currentMovie" class="noMatchContainer">
+<div *ngIf="isLoaded || !currentMovie || hasError" class="noMatchContainer">
     <div class="noMatch" *ngIf="!currentMovie?.name">
         <p class="notExistPar">Movie Doesn't Exist :(</p>
         <a routerLink="/Catalog">
