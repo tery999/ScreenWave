@@ -1,5 +1,7 @@
 # ScreenWave
 
+![2024-04-09](https://github.com/tery999/ScreenWave/assets/51335465/0628d6c8-217c-4ac9-8fb6-f2e96789c9b0)
+
 Angular project.
 A site, which acts as a data base for movies.
 
